@@ -98,8 +98,9 @@
         </fieldset>
 
         <div class="submit">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button class="btn btn-accent" type="submit">Request a quote</button>
-          <small>Opens a pre-filled email to info@theagencies.net. Nothing is stored on this page.</small>
+          <small>Goes straight to the studio. We reply to the email you give.</small>
           <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn’t, call 626.844.0028.</p>
         </div>
       </form>
@@ -153,16 +154,38 @@
     Array.from({ length: to - from + 1 }, (_, i) => `<option>${hour(from + i)}</option>`).join('');
   fill('start', 6, 16); fill('end', 14, 24);
 
-  // ponytail: mailto compose, no backend. Swap for a form endpoint when they want submissions logged.
-  const form = document.getElementById('booking');
-  form.addEventListener('submit', e => {
+  // Posts to api/booking.php (saved + emailed to the studio). If the API isn't there (static preview), falls back to a mailto.
+  const form = document.getElementById('booking'), btn = form.querySelector('button[type=submit]'), sent = document.getElementById('sent');
+  const KIND = 'studio', LIST = 'Add-on', LEAD = [];
+  const collect = () => {
+    const fd = new FormData(form), fields = {}, many = fd.getAll(LIST);
+    for (const [k, v] of fd) if (k !== LIST && k !== 'website') fields[k] = v;
+    fields[LIST] = many;
+    return fields;
+  };
+  const mailtoFallback = fields => {
+    const lines = LEAD.slice();
+    for (const [k, v] of Object.entries(fields)) if (v && v.length) lines.push(`${k}: ${Array.isArray(v) ? v.join(', ') : v}`);
+    location.href = `mailto:Shawn@theagencies.net?subject=${encodeURIComponent('Studio booking request')}&body=${encodeURIComponent(lines.join('\n'))}`;
+    sent.textContent = 'Your mail app should have opened with the request filled in. If it did not, call 626.844.0028.';
+    sent.hidden = false;
+  };
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form.reportValidity()) return;
-    const fd = new FormData(form), lines = [], addons = fd.getAll('Add-on');
-    for (const [k, v] of fd) if (k !== 'Add-on' && v) lines.push(`${k}: ${v}`);
-    lines.push(`Add-ons: ${addons.length ? addons.join(', ') : 'none'}`);
-    const subject = `Studio booking request — ${fd.get('Stage')}, ${fd.get('Load in')}`;
-    location.href = `mailto:info@theagencies.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-    document.getElementById('sent').hidden = false;
+    const fields = collect();
+    btn.disabled = true; btn.textContent = 'Sending...';
+    try {
+      const r = await fetch('api/booking.php', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: KIND, fields, website: form.website.value }) });
+      const j = await r.json();
+      if (!r.ok || !j.ok) throw new Error(j.error || r.statusText);
+      form.reset(); fill('start', 6, 16); fill('end', 14, 24);
+      sent.textContent = `Request #${j.id} sent. We will get back to you within the day at the email you gave. Need it sooner? Call 626.844.0028.`;
+      sent.hidden = false;
+      btn.textContent = 'Sent';
+    } catch (err) {
+      btn.disabled = false; btn.textContent = 'Request a quote';
+      mailtoFallback(fields);
+    }
   });
 </script>

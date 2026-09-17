@@ -1,0 +1,4 @@
+# Apache (GoDaddy): never serve the config or the database directly.
+<FilesMatch "^(config\.php|config\.example\.php|common\.php)$">
+  Require all denied
+</FilesMatch>
