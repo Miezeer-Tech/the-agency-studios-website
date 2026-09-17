@@ -1,0 +1,158 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book The Agency Studios</title>
+<meta name="description" content="Request a quote for the Main Stage or Insert Stage at The Agency Studios in Monrovia, California.">
+<link rel="stylesheet" href="styles.css">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
+    <ul>
+      <li><a href="index.html#stages">Stages</a></li>
+      <li><a href="index.html#facility">Facility</a></li>
+      <li><a href="index.html#gallery">On Set</a></li>
+      <li><a href="index.html#clients">Clients</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="index.html#safety">Safe Set</a></li>
+    </ul>
+    <a class="tel" href="tel:+16268440028">626.844.0028</a>
+    <a class="btn btn-accent" href="#book">Book Studio</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="book page-top" id="book">
+    <div class="wrap">
+      <div class="side reveal">
+        <p class="eyebrow">Book the studio</p>
+        <h2>Tell us about the shoot.</h2>
+        <p class="lede">Dates, stage, and headcount are enough to get a quote back to you. Add-ons can be sorted later.</p>
+        <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:info@theagencies.net">info@theagencies.net</a>. Last-minute shoots welcome.</p>
+        <p class="alt">Booking the Podcast Room? <a href="podcast.html#book">It has its own booking form</a>.</p>
+      </div>
+
+      <form id="booking" class="reveal" novalidate>
+        <fieldset>
+          <legend>Dates</legend>
+          <div class="row">
+            <label class="field">Load in <input type="date" name="Load in" required></label>
+            <label class="field">Load out <input type="date" name="Load out" required></label>
+          </div>
+          <div class="row">
+            <label class="field">Start time <select name="Start time" id="start"></select></label>
+            <label class="field">End time <select name="End time" id="end"></select></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Stage</legend>
+          <div class="seg" role="radiogroup" aria-label="Stage">
+            <label><input type="radio" name="Stage" value="Main Stage" checked>Main Stage</label>
+            <label><input type="radio" name="Stage" value="Insert Stage">Insert Stage</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Production</legend>
+          <div class="seg wrap4" role="radiogroup" aria-label="Type of production">
+            <label><input type="radio" name="Production" value="Video / film shoot" checked>Video / film</label>
+            <label><input type="radio" name="Production" value="Photo shoot">Photo</label>
+            <label><input type="radio" name="Production" value="Live broadcast / stream">Live stream</label>
+            <label><input type="radio" name="Production" value="Podcast">Podcast</label>
+          </div>
+          <label class="field">Attendees
+            <select name="Attendees">
+              <option>1–5</option><option>5–10</option><option>10–20</option><option>20–30</option><option>30–40</option><option>40–50</option><option>50–60</option><option>60–70</option><option>70+</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Add-ons you’re interested in</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="Add-on" value="Production offices">Production offices</label>
+            <label><input type="checkbox" name="Add-on" value="Lighting package">Lighting package</label>
+            <label><input type="checkbox" name="Add-on" value="Camera package">Camera package</label>
+            <label><input type="checkbox" name="Add-on" value="Grip package">Grip package</label>
+            <label><input type="checkbox" name="Add-on" value="Distro package">Distro package</label>
+            <label><input type="checkbox" name="Add-on" value="Folding tables">Folding tables</label>
+            <label><input type="checkbox" name="Add-on" value="Folding chairs">Folding chairs</label>
+            <label><input type="checkbox" name="Add-on" value="10x10 tents with sides">10×10 tents with sides</label>
+            <label><input type="checkbox" name="Add-on" value="Two-way radios">Two-way radios</label>
+            <label><input type="checkbox" name="Add-on" value="Live broadcast + high-speed fiber">Live broadcast and fiber</label>
+            <label><input type="checkbox" name="Add-on" value="Long-term studio rental">Long-term studio rental</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact</legend>
+          <div class="row">
+            <label class="field">First name <input name="First name" autocomplete="given-name" required></label>
+            <label class="field">Last name <input name="Last name" autocomplete="family-name" required></label>
+          </div>
+          <div class="row">
+            <label class="field">Email <input type="email" name="Email" autocomplete="email" required></label>
+            <label class="field">Phone <input type="tel" name="Phone" autocomplete="tel"></label>
+          </div>
+        </fieldset>
+
+        <div class="submit">
+          <button class="btn btn-accent" type="submit">Request a quote</button>
+          <small>Opens a pre-filled email to info@theagencies.net. Nothing is stored on this page.</small>
+          <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn’t, call 626.844.0028.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="index.html" aria-label="The Agency Studios"><img class="dark-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"><img class="light-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210" style="filter:invert(1)"></a>
+        <p style="max-width:34em;color:var(--fg-2)">This newly built studio is the largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <address><a href="https://maps.apple.com/?q=270+W+Duarte+Rd+Suite+C,+Monrovia,+CA+91016" rel="noopener">270 West Duarte Rd, Suite C<br>Monrovia, CA 91016</a></address>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16268440028">626.844.0028</a></li>
+          <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
+          <li><a href="#book">Book a stage</a></li>
+          <li><a href="podcast.html#book">Book the Podcast Room</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 The Agency Studios. Monrovia, California.</span>
+      <span><a href="index.html#stages">Main Stage</a> · <a href="index.html#stages">Insert Stage</a> · <a href="podcast.html">Podcast Room</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hours from the original booking form: starts 6am–4pm, ends 2pm–12am.
+  const hour = h => `${((h + 11) % 12) + 1}${h < 12 || h === 24 ? 'am' : 'pm'}`;
+  const fill = (id, from, to) => document.getElementById(id).innerHTML =
+    Array.from({ length: to - from + 1 }, (_, i) => `<option>${hour(from + i)}</option>`).join('');
+  fill('start', 6, 16); fill('end', 14, 24);
+
+  // ponytail: mailto compose, no backend. Swap for a form endpoint when they want submissions logged.
+  const form = document.getElementById('booking');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const fd = new FormData(form), lines = [], addons = fd.getAll('Add-on');
+    for (const [k, v] of fd) if (k !== 'Add-on' && v) lines.push(`${k}: ${v}`);
+    lines.push(`Add-ons: ${addons.length ? addons.join(', ') : 'none'}`);
+    const subject = `Studio booking request — ${fd.get('Stage')}, ${fd.get('Load in')}`;
+    location.href = `mailto:info@theagencies.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    document.getElementById('sent').hidden = false;
+  });
+</script>
