@@ -10,15 +10,19 @@
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
-    <ul>
+    <ul id="site-menu">
       <li><a href="index.html#stages">Stages</a></li>
       <li><a href="facility.html">Facility</a></li>
       <li><a href="index.html#gallery">On Set</a></li>
       <li><a href="index.html#clients">Clients</a></li>
       <li><a href="podcast.html" aria-current="page">Podcast</a></li>
+      <li class="m-only"><a href="safe-set.html">Safe Set</a></li>
+      <li class="m-only"><a href="schematic.html">Schematic</a></li>
+      <li class="m-only"><a href="tel:+16268440028">626.844.0028</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
     <a class="btn btn-gold" href="#book">Book Podcast Room</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
   </div>
 </header>
 
@@ -261,4 +265,15 @@
       mailtoFallback(fields);
     }
   });
+</script>
+<script>
+  // Mobile menu: the nav list becomes a panel under the bar. Closes on link tap, Escape, or resize past the breakpoint.
+  (() => {
+    const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn'), list = nav.querySelector('ul');
+    const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };
+    btn.addEventListener('click', () => set(!nav.classList.contains('open')));
+    list.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+    matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) set(false); });
+  })();
 </script>
