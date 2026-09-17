@@ -16,7 +16,7 @@
       <li><a href="safe-set.html">Safe Set</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
-    <a class="btn btn-accent" href="#book">Book Studio</a>
+    <a class="btn btn-accent" href="#book">Book the studio</a>
   </div>
 </header>
 
@@ -63,7 +63,7 @@
           </div>
           <label class="field">Attendees
             <select name="Attendees">
-              <option>1–5</option><option>5–10</option><option>10–20</option><option>20–30</option><option>30–40</option><option>40–50</option><option>50–60</option><option>60–70</option><option>70+</option>
+              <option>1-5</option><option>5-10</option><option>10-20</option><option>20-30</option><option>30-40</option><option>40-50</option><option>50-60</option><option>60-70</option><option>70+</option>
             </select>
           </label>
         </fieldset>
@@ -99,7 +99,7 @@
 
         <div class="submit">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <button class="btn btn-accent" type="submit">Request a quote</button>
+          <button class="btn btn-accent" type="submit">Book the studio</button>
           <small>Goes straight to the studio. We reply to the email you give.</small>
           <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn’t, call 626.844.0028.</p>
         </div>
@@ -149,7 +149,7 @@
 </footer>
 
 <script>
-  // Hours from the original booking form: starts 6am–4pm, ends 2pm–12am.
+  // Hours from the original booking form: starts 6am-4pm, ends 2pm-12am.
   const hour = h => `${((h + 11) % 12) + 1}${h < 12 || h === 24 ? 'am' : 'pm'}`;
   const fill = (id, from, to) => document.getElementById(id).innerHTML =
     Array.from({ length: to - from + 1 }, (_, i) => `<option>${hour(from + i)}</option>`).join('');
@@ -185,7 +185,7 @@
       sent.hidden = false;
       btn.textContent = 'Sent';
     } catch (err) {
-      btn.disabled = false; btn.textContent = 'Request a quote';
+      btn.disabled = false; btn.textContent = 'Book the studio';
       mailtoFallback(fields);
     }
   });

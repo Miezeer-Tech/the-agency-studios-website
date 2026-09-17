@@ -2,3 +2,6 @@
 .DS_Store
 api/config.php
 api/data/
+.agents/
+.claude/
+skills-lock.json

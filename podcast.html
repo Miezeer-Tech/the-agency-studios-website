@@ -29,10 +29,9 @@
       <article class="stage lead" style="padding:0;border:0">
         <figure><img src="assets/podcast-room.jpg" alt="The podcast room: a cream sofa and two yellow armchairs on a slatted dark-wood wall, three cameras and boom mics set up" fetchpriority="high"></figure>
         <div>
-          <p class="eyebrow">Podcast Room</p>
           <h1>Sit down, hit record, go live.</h1>
           <p class="body">A dressed set with a three-camera setup, four mics and a live switcher already patched in. Walk in with your guests and walk out with the episode, or go out live while it happens.</p>
-          <p class="rate-big">From $150–$200<span>per hour</span></p>
+          <p class="rate-big">From $150 to $200<span>per hour</span></p>
           <dl class="spec">
             <dt>Mics</dt><dd>Up to 4 Shure SM7B</dd>
             <dt>Cameras</dt><dd>3-camera, Panasonic HC-X1000</dd>
@@ -51,7 +50,6 @@
     <div class="wrap">
       <div class="head-2">
         <div>
-          <p class="eyebrow">How it works</p>
           <h2 class="display">Four steps from booking to episode.</h2>
         </div>
         <p class="lede">You bring the conversation. The room, the crew position, and the signal chain are already set when you walk in.</p>
@@ -69,7 +67,6 @@
     <div class="wrap">
       <div class="head-2">
         <div>
-          <p class="eyebrow">What's included</p>
           <h2 class="display">Everything on the rate card, nothing hidden.</h2>
         </div>
         <p class="lede">The hourly rate covers the room, the gear, and an operator. Light changes and live broadcast are on the request form so we can staff for them.</p>
@@ -91,7 +88,6 @@
 
   <section class="gallery light">
     <div class="wrap">
-      <p class="eyebrow">On the set</p>
       <h2 class="display">Shows recorded here.</h2>
     </div>
     <ul class="rail" data-hidebar aria-label="Podcast Room photos">
@@ -108,12 +104,10 @@
   <section class="band light" id="book">
     <div class="wrap book">
       <div class="side">
-        <p class="eyebrow">Book the Podcast Room</p>
         <h2 class="display" style="font-size:clamp(30px,3.6vw,48px)">Tell us about the show.</h2>
         <p class="lede">A date, how many people are on mic, and whether you're going live is enough to get a quote back to you.</p>
         <div class="rate-card">
-          <p class="eyebrow">Rate</p>
-          <p class="rate-big" style="margin:0">From $150–$200<span>per hour</span></p>
+          <p class="rate-big" style="margin:0">From $150 to $200<span>per hour</span></p>
           <p class="alt">The hourly rate depends on crew and broadcast needs. Tell us the show and we'll quote the exact rate.</p>
         </div>
         <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:info@theagencies.net">info@theagencies.net</a>. Booking a stage instead? <a href="book.html">Use the studio form</a>.</p>
@@ -176,7 +170,7 @@
 
         <div class="submit">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <button class="btn btn-gold" type="submit">Request podcast booking</button>
+          <button class="btn btn-gold" type="submit">Book the Podcast Room</button>
           <small>Goes straight to the studio. We reply to the email you give.</small>
           <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn't, call 626.844.0028.</p>
         </div>
@@ -227,7 +221,7 @@
 </footer>
 
 <script>
-  // Same hours as the studio form: starts 6am–4pm, ends 2pm–12am.
+  // Same hours as the studio form: starts 6am to 4pm, ends 2pm to 12am.
   const hour = h => `${((h + 11) % 12) + 1}${h < 12 || h === 24 ? 'am' : 'pm'}`;
   const fill = (id, from, to) => document.getElementById(id).innerHTML =
     Array.from({ length: to - from + 1 }, (_, i) => `<option>${hour(from + i)}</option>`).join('');
@@ -263,7 +257,7 @@
       sent.hidden = false;
       btn.textContent = 'Sent';
     } catch (err) {
-      btn.disabled = false; btn.textContent = 'Request podcast booking';
+      btn.disabled = false; btn.textContent = 'Book the Podcast Room';
       mailtoFallback(fields);
     }
   });
