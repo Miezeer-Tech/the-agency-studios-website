@@ -1,0 +1,174 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Schematic</title>
+<meta name="description" content="Interactive floor plan of The Agency Studios in Monrovia, California: Stage 1 with a 47-by-43-foot two-wall cyc, Stage 2 insert stage, green rooms, power, parking, and load-in.">
+<link rel="stylesheet" href="styles.css">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
+    <ul>
+      <li><a href="index.html#stages">Stages</a></li>
+      <li><a href="index.html#facility">Facility</a></li>
+      <li><a href="index.html#gallery">On Set</a></li>
+      <li><a href="index.html#clients">Clients</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="index.html#safety">Safe Set</a></li>
+    </ul>
+    <a class="tel" href="tel:+16268440028">626.844.0028</a>
+    <a class="btn btn-accent" href="book.html">Book Studio</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="plan page-top">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Studio schematic</p>
+        <h1>Walk the floor before you load in.</h1>
+        <p class="lede">Tap any marker on the plan to see what's there. Scroll or pinch to zoom, drag to pan. North is to the left of the drawing.</p>
+      </div>
+
+      <div class="plan-layout">
+        <div class="plan-stage">
+          <div class="plan-tools">
+            <button class="tool" type="button" id="zoom-out" aria-label="Zoom out">&minus;</button>
+            <output id="zoom-level" for="zoom-in zoom-out">100%</output>
+            <button class="tool" type="button" id="zoom-in" aria-label="Zoom in">+</button>
+            <button class="tool text" type="button" id="zoom-reset">Fit</button>
+          </div>
+          <div class="plan-viewport" id="viewport" tabindex="0" aria-label="Floor plan, zoomable">
+            <div class="plan-canvas" id="canvas">
+              <img src="assets/floor-plan.png" alt="Schematic floor plan of The Agency Studios" width="1376" height="768" draggable="false" fetchpriority="high">
+              <!-- hotspots are positioned as percentages of the image, so they track every zoom level -->
+              <button class="spot" type="button" data-id="stage1" style="left:77%;top:56%" aria-label="Stage 1"></button>
+              <button class="spot" type="button" data-id="cyc" style="left:77.5%;top:46%" aria-label="Two-wall cyc"></button>
+              <button class="spot" type="button" data-id="stage2" style="left:79%;top:19%" aria-label="Stage 2"></button>
+              <button class="spot" type="button" data-id="doors" style="left:82%;top:88%" aria-label="Elephant doors"></button>
+              <button class="spot" type="button" data-id="power" style="left:54%;top:50%" aria-label="Company switch"></button>
+              <button class="spot" type="button" data-id="multi" style="left:54.5%;top:58%" aria-label="Multi-use room"></button>
+              <button class="spot" type="button" data-id="green" style="left:83%;top:36%" aria-label="Green rooms"></button>
+              <button class="spot" type="button" data-id="kitchen" style="left:68.5%;top:36%" aria-label="Kitchenette"></button>
+              <button class="spot" type="button" data-id="bath" style="left:54.5%;top:72%" aria-label="Talent bathroom and shower"></button>
+              <button class="spot" type="button" data-id="storage" style="left:54.5%;top:88%" aria-label="Storage"></button>
+              <button class="spot" type="button" data-id="offices" style="left:38%;top:55%" aria-label="Corporate offices"></button>
+              <button class="spot" type="button" data-id="parking" style="left:44%;top:91%" aria-label="Production parking"></button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="plan-info" aria-live="polite">
+          <ol class="legend" id="legend">
+            <li data-id="stage1"><b>Stage 1</b><span>3,000 sq ft main stage, 60′ × 53′</span>
+              <p>The main stage. Overall studio space of 3,000 sq ft with a 20′ ceiling to the lighting grid. This is where the Technocrane builds happen.</p></li>
+            <li data-id="cyc"><b>Two-wall cyc</b><span>2,200 sq ft, 47′ × 43′</span>
+              <p>A seamless two-wall cyclorama: a 47′ wall and a 43′ cyc on a 45′ wall. Drape it black for set builds or shoot it clean.</p></li>
+            <li data-id="stage2"><b>Stage 2, insert stage</b><span>1,128 sq ft, 24′ × 47′</span>
+              <p>One-wall cyc and open space. Painted green for keying, and it runs at the same time as Stage 1 for double-up days.</p></li>
+            <li data-id="doors"><b>Two elephant doors</b><span>Drive-in load-in from the side lot</span>
+              <p>Two load-in elephant doors on the lot side of Stage 1. Trucks pull right up; grip and set pieces roll straight onto the stage.</p></li>
+            <li data-id="power"><b>Company switch</b><span>600 A, 3-phase</span>
+              <p>Cam-lock tie-in at the company switch between the stages. Run your distro without a generator.</p></li>
+            <li data-id="multi"><b>Multi-use room</b><span>DIT, audio, lighting</span>
+              <p>A closed room off the stage for the DIT station, sound cart, or lighting board, out of the shot and out of the noise.</p></li>
+            <li data-id="green"><b>Green rooms 01 and 02</b><span>Wardrobe and makeup</span>
+              <p>Two green rooms off Stage 2 for wardrobe and hair-and-makeup, with lit mirrors and talent seating.</p></li>
+            <li data-id="kitchen"><b>Kitchenette</b><span>Crafty and client hold</span>
+              <p>A kitchenette beside the green rooms for craft services and coffee between setups.</p></li>
+            <li data-id="bath"><b>Talent bathroom and shower</b><span>Plus a separate crew bathroom</span>
+              <p>A talent makeup bathroom with a private shower, and a separate crew bathroom, all off the stage corridor.</p></li>
+            <li data-id="storage"><b>Storage</b><span>Cases and stands</span>
+              <p>Storage for cases, stands, and expendables so the stage floor stays clear.</p></li>
+            <li data-id="offices"><b>Corporate offices</b><span>No production access</span>
+              <p>The Agency Advertising Group's private offices share the building. No production access, and no production parking in front of them.</p></li>
+            <li data-id="parking"><b>Production parking</b><span>Side lot, by the elephant doors</span>
+              <p>All production parking is in the side lot, where trucks and crew cars line up next to the elephant doors.</p></li>
+          </ol>
+        </aside>
+      </div>
+
+      <p class="plan-note">Dimensions are from the studio's own spec sheet. Bring a tape for anything that has to fit to the inch, and <a href="book.html">tell us in the booking form</a> what you're bringing in.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="index.html" aria-label="The Agency Studios"><img class="dark-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"><img class="light-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210" style="filter:invert(1)"></a>
+        <p style="max-width:34em;color:var(--fg-2)">This newly built studio is the largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <address><a href="https://maps.apple.com/?q=270+W+Duarte+Rd+Suite+C,+Monrovia,+CA+91016" rel="noopener">270 West Duarte Rd, Suite C<br>Monrovia, CA 91016</a></address>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16268440028">626.844.0028</a></li>
+          <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
+          <li><a href="book.html">Book a stage</a></li>
+          <li><a href="podcast.html#book">Book the Podcast Room</a></li>
+          <li><a href="schematic.html" aria-current="page">Schematic</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 The Agency Studios. Monrovia, California.</span>
+      <span><a href="index.html#stages">Main Stage</a> · <a href="index.html#stages">Insert Stage</a> · <a href="podcast.html">Podcast Room</a> · <a href="schematic.html">Schematic</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Zoom: transform scale on the canvas; pan is the viewport's own scrolling (native momentum, rubber-band on iOS).
+  const vp = document.getElementById('viewport'), cv = document.getElementById('canvas'), out = document.getElementById('zoom-level');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let z = 1;
+  const fit = () => { z = 1; apply(); };
+  const apply = (fx = .5, fy = .5) => {
+    z = Math.min(4, Math.max(1, z));
+    const w = vp.clientWidth * z, h = w * 768 / 1376;
+    const sx = vp.scrollLeft, sy = vp.scrollTop, ow = cv.offsetWidth, oh = cv.offsetHeight;
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    // keep the point under the pointer where it was
+    vp.scrollLeft = (sx + fx * vp.clientWidth) * (w / ow) - fx * vp.clientWidth;
+    vp.scrollTop = (sy + fy * vp.clientHeight) * (h / oh) - fy * vp.clientHeight;
+    out.textContent = Math.round(z * 100) + '%';
+  };
+  document.getElementById('zoom-in').onclick = () => { z *= 1.4; apply(); };
+  document.getElementById('zoom-out').onclick = () => { z /= 1.4; apply(); };
+  document.getElementById('zoom-reset').onclick = fit;
+  vp.addEventListener('wheel', e => {
+    if (!e.ctrlKey && Math.abs(e.deltaY) < 30 && z === 1) return;   // plain trackpad scroll at 100% scrolls the page
+    e.preventDefault();
+    const r = vp.getBoundingClientRect();
+    z *= e.deltaY < 0 ? 1.1 : 1 / 1.1;
+    apply((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+  }, { passive: false });
+  // Drag to pan with a mouse (touch pans natively).
+  let drag = null;
+  vp.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && !e.target.closest('.spot')) { drag = { x: e.clientX, y: e.clientY, l: vp.scrollLeft, t: vp.scrollTop }; vp.setPointerCapture(e.pointerId); } });
+  vp.addEventListener('pointermove', e => { if (drag) { vp.scrollLeft = drag.l - (e.clientX - drag.x); vp.scrollTop = drag.t - (e.clientY - drag.y); } });
+  vp.addEventListener('pointerup', () => drag = null); vp.addEventListener('pointercancel', () => drag = null);
+  addEventListener('resize', fit); fit();
+
+  // Hotspots and legend select each other.
+  const items = [...document.querySelectorAll('#legend li')], spots = [...document.querySelectorAll('.spot')];
+  const select = id => {
+    items.forEach(li => li.classList.toggle('on', li.dataset.id === id));
+    spots.forEach(s => s.classList.toggle('on', s.dataset.id === id));
+    const li = items.find(li => li.dataset.id === id);
+    if (li && matchMedia('(max-width: 860px)').matches) li.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+  };
+  spots.forEach(s => s.addEventListener('click', () => select(s.dataset.id)));
+  items.forEach(li => li.addEventListener('click', () => {
+    select(li.dataset.id);
+    const s = spots.find(s => s.dataset.id === li.dataset.id);
+    s.scrollIntoView({ block: 'center', inline: 'center', behavior: reduced ? 'auto' : 'smooth' });
+  }));
+  select('stage1');
+</script>
