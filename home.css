@@ -241,3 +241,21 @@ input:focus, select:focus { outline: 0; border-color: var(--gold-text); box-shad
 .submit small { color: var(--mute); font-size: 13px; }
 .submit button { border: 0; font-family: var(--text); }
 .sent { color: var(--paper); font-size: 14.5px; }
+
+/* light bands: everything inside takes ink-on-cream */
+.band.light .lede, .band.light .steps p, .band.light .book .side .alt { color: rgba(11,11,12,.66); }
+.band.light .book .side .alt a { color: var(--ink); }
+.band.light .steps li { background: #FFFFFF; border-color: rgba(11,11,12,.08); box-shadow: 0 1px 2px rgba(11,11,12,.04); }
+.band.light .incl li { border-color: rgba(11,11,12,.1); color: rgba(11,11,12,.85); }
+.band.light .rate-card { background: #FFFFFF; border-color: rgba(11,11,12,.08); }
+.band.light .rate-big { color: var(--ink); }
+.band.light legend { color: rgba(11,11,12,.5); }
+.band.light label.field { color: rgba(11,11,12,.55); }
+.band.light input, .band.light select { background: #FFFFFF; color: var(--ink); border-color: rgba(11,11,12,.14); color-scheme: light; }
+.band.light input::placeholder { color: rgba(11,11,12,.4); }
+.band.light .seg { background: rgba(11,11,12,.07); }
+.band.light .checks label { background: #FFFFFF; border-color: rgba(11,11,12,.1); }
+.band.light .submit small { color: rgba(11,11,12,.5); }
+.band.light .sent { color: var(--ink); }
+.gallery.light { background: var(--cream); color: var(--ink); }
+.gallery.light .eyebrow { color: var(--gold); }
