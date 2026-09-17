@@ -62,7 +62,9 @@ if ($signedIn && isset($_GET['pdf'])) {
   dl { display:grid; grid-template-columns:max-content 1fr; gap:8px 18px; margin:16px 0; font-size:14px; } dt { color:var(--mute); } dd { margin:0; }
   .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:16px; }
   .muted { color:var(--mute); font-size:13px; }
-  @media (max-width: 860px) { .grid { grid-template-columns:1fr; } }
+  .tbl { overflow-x:auto; }
+  @media (max-width: 860px) { .grid { grid-template-columns:1fr; } h1 { font-size:20px; } .top { flex-wrap:wrap; } }
+  @media (max-width: 600px) { th:nth-child(2), td:nth-child(2), th:nth-child(7), td:nth-child(7) { display:none; } }
 </style>
 <div class="top"><img src="../assets/Agency-Studio-Logo-white.png" alt=""><h1>Booking requests</h1>
   <?php if ($signedIn): ?><span class="sp"><?= $h($c['admin_user'] ?? '') ?> · <a href="./?logout=1">Sign out</a></span><?php endif ?>
@@ -86,7 +88,7 @@ if ($signedIn && isset($_GET['pdf'])) {
     <div class="card">
       <h2><?= count($rows) ?> request<?= count($rows) === 1 ? '' : 's' ?></h2>
       <?php if (!$rows): ?><p class="muted">Nothing yet. Requests from the booking forms land here the moment they're sent.</p><?php else: ?>
-      <table>
+      <div class="tbl"><table>
         <tr><th>#</th><th>Received</th><th>Room</th><th>Name</th><th>Shoot date</th><th>Status</th><th>Email</th></tr>
         <?php foreach ($rows as $r): ?>
         <tr class="row" onclick="location.href='./?id=<?= $r['id'] ?>'">
@@ -96,7 +98,7 @@ if ($signedIn && isset($_GET['pdf'])) {
           <td class="muted"><?= $r['emailed'] ? 'sent' : 'not sent' ?></td>
         </tr>
         <?php endforeach ?>
-      </table>
+      </table></div>
       <?php endif ?>
     </div>
     <div class="card">
