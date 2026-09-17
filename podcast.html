@@ -2,7 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Podcast Room at The Agency Studios</title>
 <meta name="description" content="Book the Podcast Room at The Agency Studios in Monrovia, California. A dressed three-camera set with four Shure SM7B mics and a live switcher, from $150 an hour.">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
 
 <header class="nav">
   <div class="wrap">
@@ -13,53 +16,110 @@
       <li><a href="index.html#gallery">On Set</a></li>
       <li><a href="index.html#clients">Clients</a></li>
       <li><a href="podcast.html" aria-current="page">Podcast</a></li>
-      <li><a href="index.html#safety">Safe Set</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
-    <a class="btn btn-accent" href="#book">Book Podcast Room</a>
+    <a class="btn btn-gold" href="#book">Book Podcast Room</a>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="stages band-dark page-top">
+  <section class="band alt page-top" style="border-top:0">
     <div class="wrap">
-      <article class="stage">
+      <article class="stage lead" style="padding:0;border:0">
         <figure><img src="assets/podcast-room.jpg" alt="The podcast room: a cream sofa and two yellow armchairs on a slatted dark-wood wall, three cameras and boom mics set up" fetchpriority="high"></figure>
         <div>
           <p class="eyebrow">Podcast Room</p>
-          <h1 style="font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-0.02em">Sit down, hit record, go live.</h1>
-          <p class="lede" style="margin-top:12px">A dressed set with a three-camera setup, four mics, and a live switcher already patched in. Walk in with your guests and walk out with the episode.</p>
-          <p class="rate"><b>From $150–$200</b> per hour</p>
+          <h1>Sit down, hit record, go live.</h1>
+          <p class="body">A dressed set with a three-camera setup, four mics and a live switcher already patched in. Walk in with your guests and walk out with the episode, or go out live while it happens.</p>
+          <p class="rate-big">From $150–$200<span>per hour</span></p>
           <dl class="spec">
-            <dt>Mics</dt><dd>Up to 4 Shure SM7B podcast mics</dd>
-            <dt>Cameras</dt><dd>3-camera setup, Panasonic HC-X1000</dd>
+            <dt>Mics</dt><dd>Up to 4 Shure SM7B</dd>
+            <dt>Cameras</dt><dd>3-camera, Panasonic HC-X1000</dd>
             <dt>Switching</dt><dd>Live RØDECaster switcher</dd>
-            <dt>Display</dt><dd>On-screen display for guests and graphics</dd>
+            <dt>Display</dt><dd>On-screen for guests and graphics</dd>
             <dt>Lighting</dt><dd>Light-change setup</dd>
             <dt>Output</dt><dd>Live broadcast ready</dd>
           </dl>
-          <a class="btn btn-accent" href="#book">Book the Podcast Room</a>
+          <a class="btn btn-gold" href="#book">Book the Podcast Room</a><a class="more" href="#how">How it works</a>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="book" id="book">
+  <section class="band" id="how">
     <div class="wrap">
-      <div class="side reveal">
+      <div class="head-2">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2 class="display">Four steps from booking to episode.</h2>
+        </div>
+        <p class="lede">You bring the conversation. The room, the crew position, and the signal chain are already set when you walk in.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Book your slot</h3><p>Pick a date, how many people are on mic, and whether you're recording or going live. We confirm the rate and the time within the day.</p></li>
+        <li><h3>Walk in, sit down</h3><p>The set is dressed, the mics are on the arms, and three cameras are framed on the sofa and chairs. Guests use the green room next door.</p></li>
+        <li><h3>We run the room</h3><p>Levels, camera switching, and on-screen graphics are handled from the RØDECaster. Ask for a light change between segments and it happens on cue.</p></li>
+        <li><h3>Leave with the show</h3><p>Take the multi-cam switch or the isolated feeds on a drive. Going live? The stream goes out on the studio's fiber while you record.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="wrap">
+      <p class="eyebrow">On the set</p>
+      <h2 class="display">Shows recorded here.</h2>
+    </div>
+    <ul class="rail" data-hidebar aria-label="Podcast Room photos">
+      <li><img src="assets/podcast-room.jpg" alt="The podcast room set, dressed and lit, with three cameras on tripods" loading="lazy"></li>
+      <li><img src="assets/set-orange-sofa.jpg" alt="Two hosts on an orange sofa set with a camera operator shooting handheld" loading="lazy"></li>
+      <li><span class="crop"><img src="assets/set-magenta.jpg" alt="Two guests on cream armchairs on a magenta-lit podcast set" loading="lazy"></span></li>
+      <li><img src="assets/set-purple.jpg" alt="A multi-camera talk-show set under purple light with neon signage" loading="lazy"></li>
+      <li><img src="assets/set-backdrop.jpg" alt="A dressed talk set with a painted backdrop and crew at video village" loading="lazy"></li>
+      <li><img src="assets/gallery-5.jpg" alt="Two hosts on yellow chairs recording a show on the green screen" loading="lazy"></li>
+      <li><img src="assets/gallery-8.jpg" alt="A singer with a microphone in front of a green-and-yellow backdrop" loading="lazy"></li>
+    </ul>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <div class="head-2">
+        <div>
+          <p class="eyebrow">What's included</p>
+          <h2 class="display">Everything on the rate card, nothing hidden.</h2>
+        </div>
+        <p class="lede">The hourly rate covers the room, the gear, and an operator. Light changes and live broadcast are on the request form so we can staff for them.</p>
+      </div>
+      <ul class="incl">
+        <li>Up to 4 Shure SM7B podcast mics on boom arms</li>
+        <li>3-camera setup, Panasonic HC-X1000, framed and matched</li>
+        <li>Live RØDECaster switcher with an operator</li>
+        <li>On-screen display for guests, names, and graphics</li>
+        <li>Light-change setup between segments</li>
+        <li>Live broadcast over high-speed fiber</li>
+        <li>Dressed set: sofa, two armchairs, slatted wall, practical lamps</li>
+        <li>Green room, kitchenette, and restrooms next door</li>
+        <li>Parking in the side lot for hosts and guests</li>
+        <li>Recordings handed off on a drive at wrap</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="book">
+    <div class="wrap book">
+      <div class="side">
         <p class="eyebrow">Book the Podcast Room</p>
-        <h2>Tell us about the show.</h2>
+        <h2 class="display" style="font-size:clamp(30px,3.6vw,48px)">Tell us about the show.</h2>
         <p class="lede">A date, how many people are on mic, and whether you're going live is enough to get a quote back to you.</p>
         <div class="rate-card">
           <p class="eyebrow">Rate</p>
-          <p class="rate"><b>From $150–$200</b> per hour</p>
-          <p class="alt">The hourly rate depends on crew and broadcast needs. Tell us the show and we’ll quote the exact rate.</p>
+          <p class="rate-big" style="margin:0">From $150–$200<span>per hour</span></p>
+          <p class="alt">The hourly rate depends on crew and broadcast needs. Tell us the show and we'll quote the exact rate.</p>
         </div>
         <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:info@theagencies.net">info@theagencies.net</a>. Booking a stage instead? <a href="book.html">Use the studio form</a>.</p>
       </div>
 
-      <form id="booking" class="reveal" novalidate>
+      <form id="booking" novalidate>
         <fieldset>
           <legend>When</legend>
           <div class="row">
@@ -115,9 +175,9 @@
         </fieldset>
 
         <div class="submit">
-          <button class="btn btn-accent" type="submit">Request podcast booking</button>
+          <button class="btn btn-gold" type="submit">Request podcast booking</button>
           <small>Opens a pre-filled email to info@theagencies.net. Nothing is stored on this page.</small>
-          <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn’t, call 626.844.0028.</p>
+          <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn't, call 626.844.0028.</p>
         </div>
       </form>
     </div>
@@ -125,12 +185,12 @@
 
 </main>
 
-<footer class="site">
+<footer class="foot">
   <div class="wrap">
     <div class="cols">
-      <div>
-        <a class="logo" href="index.html" aria-label="The Agency Studios"><img class="dark-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"><img class="light-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210" style="filter:invert(1)"></a>
-        <p style="max-width:34em;color:var(--fg-2)">This newly built studio is the largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+      <div class="brand">
+        <img src="assets/Agency-Studio-Logo-white.png" alt="The Agency Studios" width="375" height="210">
+        <p>The largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
       </div>
       <div>
         <h4>Visit</h4>
@@ -142,7 +202,7 @@
           <li><a href="tel:+16268440028">626.844.0028</a></li>
           <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
           <li><a href="book.html">Book a stage</a></li>
-          <li><a href="podcast.html#book">Book the Podcast Room</a></li>
+          <li><a href="#book">Book the Podcast Room</a></li>
         </ul>
       </div>
       <div>
@@ -151,14 +211,14 @@
           <li><a href="schematic.html">Schematic</a></li>
           <li><a href="index.html#stages">Stages</a></li>
           <li><a href="index.html#facility">Facility</a></li>
-          <li><a href="podcast.html">Podcast Room</a></li>
+          <li><a href="podcast.html" aria-current="page">Podcast Room</a></li>
           <li><a href="index.html#safety">Safe Set</a></li>
         </ul>
       </div>
     </div>
     <div class="legal">
       <span>© 2026 The Agency Studios. Monrovia, California.</span>
-      <span><a href="index.html#stages">Main Stage</a> · <a href="index.html#stages">Insert Stage</a> · <a href="podcast.html">Podcast Room</a> · <a href="schematic.html">Schematic</a></span>
+      <span><a href="index.html#stages">Main Stage</a><a href="index.html#stages">Insert Stage</a><a href="podcast.html">Podcast Room</a><a href="schematic.html">Schematic</a></span>
     </div>
   </div>
 </footer>
