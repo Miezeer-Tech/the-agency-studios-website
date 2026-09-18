@@ -60,8 +60,8 @@
             </div>
           </div>
           <figure class="spot-pop" id="spot-pop" aria-hidden="true"><img alt=""><figcaption></figcaption></figure>
-        </div>
           <p class="plan-toggle"><button class="btn btn-primary btn-sm" type="button" id="dots-toggle" aria-pressed="false">Remove Dot Indicators</button><span class="small">See the drawing on its own. The list still works.</span></p>
+        </div>
 
         <aside class="plan-info" aria-live="polite">
           <ol class="legend" id="legend">
@@ -179,11 +179,11 @@
 
   // Hotspots and legend select each other.
   const items = [...document.querySelectorAll('#legend li')], spots = [...document.querySelectorAll('.spot')];
-  const select = id => {
+  const select = (id, scroll = true) => {
     items.forEach(li => li.classList.toggle('on', li.dataset.id === id));
     spots.forEach(s => s.classList.toggle('on', s.dataset.id === id));
     const li = items.find(li => li.dataset.id === id);
-    if (li) li.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
+    if (li && scroll) li.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
   };
   spots.forEach(s => s.addEventListener('click', () => select(s.dataset.id)));
 
@@ -211,7 +211,7 @@
     const s = spots.find(s => s.dataset.id === li.dataset.id);
     s.scrollIntoView({ block: 'center', inline: 'center', behavior: reduced ? 'auto' : 'smooth' });
   }));
-  select('stage1');
+  select('stage1', false);
 </script>
 <script>
   (() => {
