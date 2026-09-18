@@ -58,33 +58,34 @@
               <button class="spot" type="button" data-id="parking" style="left:44%;top:91%" aria-label="Production parking"></button>
             </div>
           </div>
+          <figure class="spot-pop" id="spot-pop" aria-hidden="true"><img alt=""><figcaption></figcaption></figure>
         </div>
 
         <aside class="plan-info" aria-live="polite">
           <ol class="legend" id="legend">
-            <li data-id="stage1"><b>Stage 1</b><span>3,000 sq ft main stage, 60′ × 53′</span>
+            <li data-id="stage1"><b>Stage 1</b><span>3,000 sq ft main stage, 60′ × 53′</span><img src="assets/deck-main-cyc-a.jpg" alt="Stage 1 and the two-wall cyc" loading="lazy">
               <p>The main stage. Overall studio space of 3,000 sq ft with a 20′ ceiling to the lighting grid. This is where the Technocrane builds happen.</p></li>
-            <li data-id="cyc"><b>Two-wall cyc</b><span>2,200 sq ft, 47′ × 43′</span>
+            <li data-id="cyc"><b>Two-wall cyc</b><span>2,200 sq ft, 47′ × 43′</span><img src="assets/deck-main-cyc-d.jpg" alt="The curve of the cyc" loading="lazy">
               <p>A seamless two-wall cyclorama: a 47′ wall and a 43′ cyc on a 45′ wall. Drape it black for set builds or shoot it clean.</p></li>
-            <li data-id="stage2"><b>Stage 2, insert stage</b><span>1,128 sq ft, 24′ × 47′</span>
+            <li data-id="stage2"><b>Stage 2, insert stage</b><span>1,128 sq ft, 24′ × 47′</span><img src="assets/deck-insert-green-b.jpg" alt="Stage 2, pre-lit green cyc" loading="lazy">
               <p>One-wall cyc and open space. Painted green for keying, and it runs at the same time as Stage 1 for double-up days.</p></li>
-            <li data-id="doors"><b>Two elephant doors</b><span>Drive-in load-in from the side lot</span>
+            <li data-id="doors"><b>Two elephant doors</b><span>Drive-in load-in from the side lot</span><img src="assets/elephant-doors.jpg" alt="The elephant doors from the lot" loading="lazy">
               <p>Two load-in elephant doors on the lot side of Stage 1. Trucks pull right up; grip and set pieces roll straight onto the stage.</p></li>
-            <li data-id="power"><b>Company switch</b><span>600 A, 3-phase</span>
+            <li data-id="power"><b>Company switch</b><span>600 A, 3-phase</span><img src="assets/deck-power-distro.jpg" alt="Company switch and distro" loading="lazy">
               <p>Cam-lock tie-in at the company switch between the stages. Run your distro without a generator.</p></li>
-            <li data-id="multi"><b>Multi-use room</b><span>DIT, audio, lighting</span>
+            <li data-id="multi"><b>Multi-use room</b><span>DIT, audio, lighting</span><img src="assets/deck-dit-room.jpg" alt="The multi-use DIT room" loading="lazy">
               <p>A closed room off the stage for the DIT station, sound cart, or lighting board, out of the shot and out of the noise.</p></li>
-            <li data-id="green"><b>Green rooms 01 and 02</b><span>Wardrobe and makeup</span>
+            <li data-id="green"><b>Green rooms 01 and 02</b><span>Wardrobe and makeup</span><img src="assets/deck-makeup-room.jpg" alt="Green room with lit mirrors" loading="lazy">
               <p>Two green rooms off Stage 2 for wardrobe and hair-and-makeup, with lit mirrors and talent seating.</p></li>
-            <li data-id="kitchen"><b>Kitchenette</b><span>Crafty and client hold</span>
+            <li data-id="kitchen"><b>Kitchenette</b><span>Crafty and client hold</span><img src="assets/deck-kitchenette.jpg" alt="The kitchenette" loading="lazy">
               <p>A kitchenette beside the green rooms for craft services and coffee between setups.</p></li>
-            <li data-id="bath"><b>Talent bathroom and shower</b><span>Plus a separate crew bathroom</span>
+            <li data-id="bath"><b>Talent bathroom and shower</b><span>Plus a separate crew bathroom</span><img src="assets/deck-bathroom-shower.jpg" alt="Talent bathroom and shower" loading="lazy">
               <p>A talent makeup bathroom with a private shower, and a separate crew bathroom, all off the stage corridor.</p></li>
             <li data-id="storage"><b>Storage</b><span>Cases and stands</span>
               <p>Storage for cases, stands, and expendables so the stage floor stays clear.</p></li>
-            <li data-id="offices"><b>Corporate offices</b><span>No production access</span>
+            <li data-id="offices"><b>Corporate offices</b><span>No production access</span><img src="assets/deck-exec-lobby-a.jpg" alt="Office lobby" loading="lazy">
               <p>The Agency Advertising Group's private offices share the building. No production access, and no production parking in front of them.</p></li>
-            <li data-id="parking"><b>Production parking</b><span>Side lot, by the elephant doors</span>
+            <li data-id="parking"><b>Production parking</b><span>Side lot, by the elephant doors</span><img src="assets/deck-parking-a.jpg" alt="Production parking in the side lot" loading="lazy">
               <p>All production parking is in the side lot, where trucks and crew cars line up next to the elephant doors.</p></li>
           </ol>
         </aside>
@@ -179,9 +180,25 @@
     items.forEach(li => li.classList.toggle('on', li.dataset.id === id));
     spots.forEach(s => s.classList.toggle('on', s.dataset.id === id));
     const li = items.find(li => li.dataset.id === id);
-    if (li && matchMedia('(max-width: 860px)').matches) li.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    if (li) li.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
   };
   spots.forEach(s => s.addEventListener('click', () => select(s.dataset.id)));
+
+  // Hover a dot: its photo pops up above it, and drops away when the pointer leaves.
+  const pop = document.getElementById('spot-pop'), popImg = pop.querySelector('img'), popCap = pop.querySelector('figcaption'), stage = document.querySelector('.plan-stage');
+  const show = s => {
+    const li = items.find(li => li.dataset.id === s.dataset.id), img = li && li.querySelector('img');
+    if (!img) return;
+    popImg.src = img.src; popCap.textContent = li.querySelector('b').textContent;
+    const r = s.getBoundingClientRect(), b = stage.getBoundingClientRect();
+    const x = Math.min(Math.max(r.left + r.width / 2 - b.left, 120), b.width - 120), y = r.top + r.height / 2 - b.top;
+    pop.classList.toggle('below', y < 190);
+    pop.style.left = x + 'px'; pop.style.top = y + 'px';
+    pop.classList.add('show');
+  };
+  const hide = () => pop.classList.remove('show');
+  spots.forEach(s => { s.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') show(s); }); s.addEventListener('pointerleave', hide); s.addEventListener('focus', () => show(s)); s.addEventListener('blur', hide); });
+  vp.addEventListener('scroll', hide, { passive: true });
   items.forEach(li => li.addEventListener('click', () => {
     select(li.dataset.id);
     const s = spots.find(s => s.dataset.id === li.dataset.id);
