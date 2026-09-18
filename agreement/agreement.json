@@ -1,0 +1,134 @@
+[
+  {"h": "1. PARTIES"},
+  {"fields": [["Renter / Production Company", "text", true], ["Producer / Authorized Contact", "text", true], ["Address", "text"], ["Phone", "tel"], ["Email", "email", true]]},
+  {"p": "Studio / Lessor: Laska Entertainment, LLC d/b/a The Agency Studios, 270 W. Duarte Rd., Suite C, Monrovia, CA 91016 · (626) 844-0022 · Fax (626) 844-0019 · shawn@theagencies.net"},
+  {"p": "Studio warrants that it is the owner or authorized agent of the Premises and has the right to grant the use and rights herein. If Renter is a corporation, trust, or limited partnership, the individual signing represents that he/she is duly authorized to bind that entity. As Conditions Precedent, Renter must: (1) sign and return this Agreement; (2) pay 100% of the rental fee; (3) obtain the insurance required in Section 18 / Exhibit C; and (4) deliver a Certificate of Insurance naming Laska Entertainment, LLC as Additional Insured. The Premises will not be reserved, and Studio has no obligations, until all Conditions Precedent are satisfied."},
+
+  {"h": "2. USE OF PROPERTY"},
+  {"p": "Subject to the Conditions Precedent, Studio grants Renter access to and use of The Agency Studios (the \"Premises\") for the period in Exhibit A, including the right to enter with personnel and equipment to record a motion picture, television, or commercial production; to make interior and exterior recordings; and to erect temporary sets. Overtime and ancillary services are charged per the rates in Exhibit A. Studio makes no representation or warranty as to the present or future suitability of the Premises. Renter (or its representatives) has examined the Premises, accepts them as-is, and agrees Studio is not liable for loss, delay, or injury arising from the condition of the Premises except to the extent caused by Studio's gross negligence or willful misconduct."},
+  {"fields": [["Production Title / Description", "text", true]]},
+
+  {"h": "3. STUDIO ACCESS"},
+  {"p": "Studio, its directors, employees, and agents may access all studio space, stages, and off-stage production areas upon presentation of identification as Laska Entertainment, LLC personnel, provided they are actually working at the time of entry."},
+
+  {"h": "4. SECURITY DEPOSIT"},
+  {"p": "Upon execution, Renter shall deposit $2,500 (\"Security Deposit\") as security for faithful performance. Studio may apply the deposit to overtime, site-supervisor fees, damages, cleanup, or other charges reasonably attributable to Renter and not already paid. Renter is responsible for all damage caused by the shoot. At the conclusion of the shoot the parties shall jointly inspect. Within twenty (20) working days Studio shall notify Renter of immediately apparent damage and demand reimbursement."},
+
+  {"h": "5. EQUIPMENT"},
+  {"p": "Additional equipment is optional and billed separately under the fee schedule in Exhibit A (or a separate equipment agreement). Renter must submit an itemized wish list of grip, lighting, or expendables at least 72 hours before call time. If Renter rents lights, grip, vehicles, cameras, dollies, props, wardrobe, or any film/video/AV/sound equipment, Renter must carry production insurance covering all rented equipment. Renter is solely responsible for any damage or loss of equipment on the Premises (whether rented from Studio or not), unless caused solely by Studio's gross negligence or willful misconduct."},
+
+  {"h": "6. REPRESENTATIONS AND WARRANTIES OF RENTER"},
+  {"p": "Renter represents and warrants that it: (1) has the necessary rights and authority to enter this Agreement; (2) shall follow all applicable local, state, and federal laws; (3) shall return the Premises in as good condition as received (ordinary wear excepted); (4) shall repair any damage caused by its use under the procedures in this Agreement; (5) has carefully reviewed and shall follow the Rules, Procedures, and Policies in Exhibit B; and (6) unless otherwise agreed in writing, shall not bring or use real or artificial snow, water, clay, sod, sand, soil, dirt, glitter, or any similar substance, or any pyrotechnic devices, on the Premises."},
+
+  {"h": "7. INDEMNIFICATION"},
+  {"p": "Renter shall indemnify, defend (with counsel reasonably approved by Studio), and hold harmless Studio, its officers, directors, agents, employees, and owners (the \"Indemnified Parties\") from and against any and all claims, fines, penalties, and liability to any third party for loss, damage, or injury to persons or property (including attorneys' fees, judgments, and settlements) arising out of or incident to: (1) Renter's acts or omissions; (2) any breach by Renter of this Agreement; (3) Renter's noncompliance with applicable federal, state, or local laws; and (4) the acts or omissions of Renter's subcontractors, licensees, agents, or invitees. This provision survives termination."},
+
+  {"h": "8. FILM PERMIT"},
+  {"p": "If production places lights, vehicles, or any equipment (grip, flags, electric, etc.) on public access or public property, including sidewalk, alley, and grass parkway, Renter must, at its sole expense, obtain a permit from the City of Monrovia. If production does not follow any city, fire, or permit ordinances or laws, Studio has the right to stop production and require Renter to remedy the situation until all regulations are met."},
+
+  {"h": "9. CANCELLATION POLICY"},
+  {"p": "There is a cancellation fee equal to 100% of the invoiced lease, and fees are effectively non-refundable, unless the cancellation is due solely to the willful misconduct of Studio (Lessor). Any cancellation of a confirmed booking must be submitted in writing. If Renter cancels a confirmed booking with more than seven (7) days' notice before the confirmed rental, Renter shall receive a full refund of the deposit. If Renter cancels without at least seven (7) days' advance notice, Renter shall pay a cancellation fee equal to the deposit. If Studio must cancel a confirmed booking, Renter will receive a full refund."},
+
+  {"h": "10. REPLACEMENTS AND REPAIRS"},
+  {"p": "Unless otherwise agreed in writing, Renter is responsible to Studio for the replacement cost or repair cost (at Studio's reasonable election) of Studio property, including rented goods, equipment, sets, materials, or props. Loss of use is determined by the actual loss sustained by Studio. Accrued rental charges shall not be applied against the purchase price or cost of repair of lost, stolen, or damaged equipment. Any repairs shall be made using vendors approved in advance by Studio."},
+
+  {"h": "11. INDEPENDENT PARTIES; FORCE MAJEURE"},
+  {"p": "The parties are independent contractors and independent employers. This Agreement does not create a joint venture or partnership. Neither party is liable to the other for failure or delay in meeting any obligation (other than payment of money owed) when attributable to causes beyond that party's reasonable control and not a consequence of its fault or negligence, including natural disasters or other Acts of God, governmental restrictions or actions, war, riots, civil disorder, power failures, and/or damage or destruction of Studio facilities, provided the affected party promptly gives the other a written statement with sufficient details of the cause and, if requested, evidence validating the claim. This force-majeure clause does not excuse obligations or failures within a party's control."},
+
+  {"h": "12. WAIVERS"},
+  {"p": "The delay or failure of either party to assert or exercise any right, remedy, or privilege hereunder shall not constitute a waiver. No waiver is effective unless in writing and then only in the specific instance for which given."},
+
+  {"h": "13. ASSIGNMENTS"},
+  {"p": "Neither party shall assign this Agreement or any rights or obligations hereunder without prior written consent of the other party. No assignment by Renter releases Renter of its obligations hereunder."},
+
+  {"h": "14. ENFORCEABLE PARTS"},
+  {"p": "The invalidity or illegality of any part of this Agreement shall not affect the validity or force of any other part. If any provision or its application to any party or circumstance is held invalid or unenforceable, the remainder of the Agreement and the application of those provisions to other parties or circumstances remain valid and in effect."},
+
+  {"h": "15. DEFAULT AND TERMINATION"},
+  {"p": "Studio may revoke the license set forth in this Agreement at any time upon written notice. If written notice is not given, this Agreement terminates 3 days after the date of the event provided all cleanup and restoration work is completed. Termination does not waive any obligation, including Renter's obligation to make all final payments. Studio may declare Renter in default on: (A) failure to make payments or perform any obligation; (B) institution by or against Renter of bankruptcy or insolvency proceedings, reorganization, appointment of a receiver or trustee, or assignment for the benefit of creditors; (C) expiration or cancellation of any insurance policy required to be maintained by Renter; or (D) involuntary transfer of Renter's interest by operation of law. Upon default Studio may: (1) terminate the Agreement and Renter's rights; (2) declare the balance of all unpaid rent and other charges immediately payable, with interest at 10% per annum from the date of notification of default; (3) enter and repossess the property without legal process, free of Renter's rights, and release Studio and the Property Owner of any claim for trespass or damage caused by entry, repossession, or removal. Renter agrees to reimburse Studio for all reasonable expenses of repossession and enforcement, with interest at 10% per annum. If Studio places any claim in the hands of an attorney for collection, the prevailing party shall pay the other party's reasonable attorneys' fees and costs. Remedies are cumulative and may be exercised partially, concurrently, or separately."},
+
+  {"h": "16. ARBITRATION"},
+  {"p": "This Agreement shall be construed and enforced in accordance with the laws of the State of California. If the parties are unable to resolve any controversy or claim, including any claim of misrepresentation, arising out of or related to this Agreement or its breach, such controversy, claim, or dispute will be settled by arbitration in the State of California. The prevailing party is entitled to an award of reasonable attorneys' fees and costs in addition to any other relief granted."},
+
+  {"h": "17. PRIOR AGREEMENTS; ENTIRE AGREEMENT"},
+  {"p": "This Agreement supersedes and replaces any other prior agreement(s), written or verbal, regarding the subject matter hereof. It constitutes the entire understanding between the parties and may not be modified or amended orally but only by an instrument in writing signed by both parties. Notices, concerns, or approvals required or permitted hereunder shall be properly given if in writing, delivered in person or by mail, postage prepaid, addressed to the parties at the addresses designated herein. Each person signing on behalf of Renter is fully responsible for ensuring full payment is made. Each undersigned individual represents that he or she is empowered to execute this Agreement on behalf of their respective party."},
+
+  {"h": "18. INSURANCE (EXHIBIT C)"},
+  {"p": "At all times during the term (and any extension), at its sole cost, Renter shall obtain and maintain commercial general liability insurance including coverage for its employees, independent contractors, producers, agents, and vendors, and standard contractual liability coverage, from an approved company authorized to do business in California. The liability insurance shall name Laska Entertainment, LLC as an Additional Insured for the duration of the license against all claims, liabilities, and attorneys' fees, including:"},
+  {"ul": [
+    "(1) Comprehensive general liability and automobile liability each of at least $1,000,000 combined single limit for bodily injury, death, or property damage, per occurrence;",
+    "(2) Contractually assumed liability covering liability assumed under this Agreement of at least $1,000,000 combined single limit per occurrence;",
+    "(3) Workers' compensation in statutory limits and employers' liability of at least $500,000 per occurrence;",
+    "(4) Completed operations coverage; and",
+    "(5) Any other insurance commonly used by productions for services of this type."
+  ]},
+  {"p": "Insurance shall be primary and non-contributory and issued by companies with a Best's rating of not less than A and financial size category of not less than Class VIII. With or without insurance, Renter waives all rights to hold Studio responsible for any kind of damage, injury, or financial loss and takes full responsibility for any and all lawsuits and accepts complete liability. Renter shall also maintain comprehensive liability and property damage insurance of at least $1,000,000 covering general liability and $1,000,000 covering property damage, protecting Laska Entertainment, LLC and its owners, representatives, and agents as additional insureds. Renter must have workers' compensation coverage as required by law; without it Renter cannot look to Studio for any claims. Renter's signature is acceptance that the Premises are suitable for Renter's use. Certificate of Insurance: Renter shall provide a certificate confirming the required coverage, signed by an authorized agent of the carrier. Name Laska Entertainment, LLC as Additional Insured. Certificate Holder: Laska Entertainment, LLC, 270 West Duarte Suite C, Monrovia, CA 91016. If Renter does not have insurance, Renter waives all rights to hold Laska Entertainment, LLC responsible for any damage, injury, or financial loss and works at its own risk."},
+
+  {"pb": true},
+  {"h": "EXHIBIT A — STUDIO RENTAL RATES & AMENITIES"},
+  {"p": "Stage 1 · Standard day = 12 hours · Overtime billed in 15-minute increments. The studio fills in rates when it sends this agreement; leave a line blank if it doesn't apply."},
+  {"sub": "Studio rental · Pre-light / build / strike days"},
+  {"row": "Pre-light · Main Stage", "cols": [["Rate $", "number"], ["Hours", "number"], ["x Days", "number"], ["= $", "number"]]},
+  {"row": "Pre-light · Main Stage overtime", "cols": [["Overtime rate $ / hour", "number"], ["OT starts after (hours)", "number"]]},
+  {"row": "Pre-light · Insert Stage", "cols": [["Rate $", "number"], ["Hours", "number"], ["x Days", "number"], ["= $", "number"]]},
+  {"row": "Pre-light · Insert Stage overtime", "cols": [["Overtime rate $ / hour", "number"], ["OT starts after (hours)", "number"]]},
+  {"row": "Pre-light / build", "cols": [["Start", "date"], ["End", "date"]]},
+  {"row": "Strike / wrap", "cols": [["Start", "date"], ["End", "date"]]},
+  {"sub": "Studio rental · Production / shoot days"},
+  {"row": "Shoot · Main Stage", "cols": [["Rate $", "number"], ["Hours", "number"], ["x Days", "number"], ["= $", "number"]]},
+  {"row": "Shoot · Main Stage overtime", "cols": [["Overtime rate $ / hour", "number"], ["OT starts after (hours)", "number"]]},
+  {"row": "Shoot · Insert Stage", "cols": [["Rate $", "number"], ["Hours", "number"], ["x Days", "number"], ["= $", "number"]]},
+  {"row": "Shoot · Insert Stage overtime", "cols": [["Overtime rate $ / hour", "number"], ["OT starts after (hours)", "number"]]},
+  {"row": "Shoot days", "cols": [["Start", "date"], ["End", "date"]]},
+  {"sub": "Additional fees"},
+  {"row": "Paint fee", "cols": [["Labor $", "number"], ["Materials $", "number"], ["Days", "number"], ["Total $", "number"]]},
+  {"row": "Clean fee", "cols": [["Rate $", "number"], ["Days", "number"], ["Total $", "number"]]},
+  {"row": "Site representative", "cols": [["Rate $ / hr", "number"], ["Hours", "number"], ["Days", "number"], ["Total $", "number"]]},
+  {"p": "* Site Rep invoices production company directly. OT after 12 hrs billed in 15-min increments."},
+  {"row": "Total base rental (studio stages + fees above)", "cols": [["$", "number"]]},
+
+  {"sub": "Studio amenities"},
+  {"table": {"cols": [["Status", "select", ["N/A", "Included", "Added"]], ["Rate $", "number"], ["Days", "number"], ["Total $", "number"], ["Description", "text"]],
+    "rows": ["Studio Power", "Scissor Lift - 01", "Scissor Lift - 02", "Studio Black Drapes", "Studio Green Screen Drapes", "Additional Parking", "Executive Conference Room", "Production Conference Room", "Set / Props", "Lighting Package", "Production Supplies", "Audio & Equipment", "Electrical Distribution", "Production Printer", "Production Monitors", "High-Speed Internet", "Teleprompter", "Grip", "Camera & Support", "Misc / Other (1)", "Misc / Other (2)"]}},
+
+  {"sub": "Totals"},
+  {"row": "Total rental (studio stages + additional fees)", "cols": [["$", "number"]]},
+  {"row": "Total amenities", "cols": [["$", "number"]]},
+  {"row": "Grand total", "cols": [["$", "number"]]},
+  {"row": "Discounted total (if applicable)", "cols": [["$", "number"]]},
+  {"p": "All amounts in USD."},
+
+  {"pb": true},
+  {"h": "EXHIBIT B — RULES, PROCEDURES, AND POLICIES"},
+  {"p": "Producer shall use the Premises in a safe and proper manner and ensure all personnel adhere to proper precautions and safety standards required by applicable governmental agencies."},
+  {"sub": "Safety, Health, Protection & Permits"},
+  {"p": "Renter shall maintain and follow OSHA regulations and obtain all applicable Film LA / City of Monrovia permits, licenses, and approvals. Fines may be imposed if not obtained. Use of studio audiences, extra talent, animals, stunts, hazardous materials, spray-painting equipment, automobiles, combustion engines, smoke machines, explosives, and/or pyrotechnics is not allowed without prior written approval from Studio. Renter shall submit all such requests in writing and follow all associated laws and requirements. Renter shall take all necessary precautions with motor vehicles and rented lift equipment; Studio is not liable for injuries or property damage. Lift equipment may be used only by Renter's employees and personnel qualified to use it. Only flame-retardant certified fabrics, blackouts, curtains, or other hanging drapery may be used; certification must be provided or Studio will field-test. No plastic or Visqueen may be hung for blacking out windows. Maintain four (4') foot clearances around all doorways and walls. Never block the exterior door to the parking lot; maintain a car-width path at all times. Renter may load/unload trucks in the street but may not block the street. Renter must abide by all fire safety requirements and ordinances. Keep at least a 4' wide x 10' long clearance at the two fire exits (central-facing doors) at all times during production."},
+  {"sub": "Cleaning"},
+  {"p": "Premises must be cleaned and returned to the original condition in which they were presented (ordinary wear and tear excepted). Leave the Premises clean of all trash and materials, remove all tape and residues, and sweep the floor clean at end of term. Extra cleaning, waste removal, and/or storage charges may be imposed if Renter leaves trash, stains, residues, sets, set pieces, props, materials, equipment, or other items. Renter is responsible for all damage and cleanup caused. Depending on the situation the Studio may need to be painted back to original color at Renter's expense. Studio dumpsters are available to a limit and will not accommodate scenic trash piled higher than the container. Fee of $200.00 if the above is not followed. An additional studio cleaning fee of $200.00 (not waived) will be charged upon departure for cleaning of floors, bathrooms, makeup and wardrobe rooms, etc., if Renter leaves the Studio in an unsatisfactory condition."},
+  {"sub": "Trash & Waste Removal"},
+  {"p": "All rentals include basic trash service (single dumpster for catering and office trash only; one dumpster removal per week). All catering trash must be in heavy-duty bags provided by Renter, removed from stage and off-stage areas at the end of each day, securely tied, and placed in the provided dumpster. All other trash is not permitted in the provided dumpster and must be removed from the Premises. Building materials, art-department materials, and set-construction materials require a separate dumpster, additional waste-removal service, and applicable fees. Disposal of hazardous materials in Studio dumpsters is strictly prohibited and violates local, state, and federal law."},
+  {"sub": "Cyclorama"},
+  {"p": "Cyclorama walls and base cove must be kept clean and in good condition. Cyclorama is furnished pure white and must be returned to original condition unless Studio provides a written statement of a pre-existing condition that excuses Renter, or if Renter does not require use of the cyclorama (in which case Renter may use all available floor space including the cyclorama floor). If Renter requires the cyclorama painted any color other than white, a base coat of primer sealer must be applied in the restoration process back to white; Renter incurs all associated costs. Studio management must approve all paints. Painting of the cyclorama is to be performed by Studio personnel only. Drilling into any part of the cyclorama is prohibited unless cleared by studio owner Shawn Laska. Do not walk on corner and base coves; keep sets, materials, lift equipment, and lighting/grip equipment away from cyclorama walls and coves. Duct tape and gaffer tape on cyclorama are prohibited; only low-tack tape (e.g., 3M blue painter's tape) or Studio-approved tape may be used temporarily. Protective materials (paper, boot covers, layout board, sound blankets) are available for purchase or rental. Repair, refinishing, and/or painting charges may be imposed if walls, coves, or floors are discolored or soiled above normal wear or if damage has occurred as determined by Studio management."},
+  {"sub": "Flooring"},
+  {"p": "Producer shall ensure floors are protected with protective covering during painting of any areas and during placement and removal of all equipment. No nails, screws, or hole-producing devices shall be used to attach sets or related equipment to floors, walls, or ceilings."},
+  {"sub": "Use of Damaging Materials"},
+  {"p": "Prior to any use of snow, water, clay, sod, sand, soil, dirt, glitter, or any similar substance, or the use of pyrotechnic devices or substances, Renter must notify and obtain written approval from Studio. If approval is granted, an additional separate insurance policy may be required. Renter is responsible for any and all damage to floors, walls, structure, and heating/air systems resulting from such use. If the space is not returned to original condition, an extra cleaning fee will be levied."},
+  {"sub": "Crew and Talent Parking"},
+  {"p": "Parking is available in the Lessor parking lot on a first-come, first-serve, non-exclusive basis; however, Lessor will provide up to twenty-five (25) designated parking spaces. If, in Lessor's sole judgment, use of the parking lot presents dangerous or inequitable situations, Lessor reserves the right to limit and reallocate parking privileges. Production parking (crew, talent, and production-related vehicles) must park in the side parking lot adjacent to the studio. The six parking spots in front of the offices are reserved for Laska Entertainment staff only, unless approved by management."},
+  {"sub": "COVID-19 / Public Health Compliance"},
+  {"p": "Renter represents and warrants that Renter and any employees, agents, or guests shall exercise due diligence in ensuring compliance with all local, state, or federal laws, guidelines, and restrictions relating to COVID-19 or otherwise relating to public health. Studio explicitly reserves the right to injunctive relief, in addition to any and all remedies available at law, if Renter breaches these representations and warranties."},
+
+  {"pb": true},
+  {"h": "19. SIGNATURES"},
+  {"p": "By signing below, each party acknowledges that it has read, understands, and agrees to all terms of this Agreement, including Exhibits A, B, and C. Each individual signing represents that he or she is authorized to bind the named party. Renter agrees that full payment is due as stated herein."},
+  {"sub": "Studio / Lessor"},
+  {"p": "Laska Entertainment, LLC d/b/a The Agency Studios · Shawn Laska / Owner · (626) 844-0022. The studio countersigns after receiving this agreement."},
+  {"sub": "Renter / Production Company"},
+  {"fields": [["Company Name", "text", true], ["Authorized Signer (print)", "text", true], ["Title", "text", true]]},
+  {"sig": "renter", "label": "Renter signature"},
+  {"sub": "Additional Renter & Personal Guarantee (if applicable)"},
+  {"p": "Complete if production insurance differs from the billing company, or if Studio requests a personal guarantee. The undersigned personally and unconditionally guarantees all amounts owed under this Agreement and agrees to pay any unpaid balance and/or legal fees if not paid by the above entity."},
+  {"fields": [["Guarantor Name", "text"], ["Guarantor Address", "text"], ["Guarantor Phone", "tel"], ["Guarantor Email", "email"]]},
+  {"sig": "guarantor", "label": "Guarantor signature (only if a guarantor is named)"},
+  {"p": "A fully executed copy of this Agreement, Certificate of Insurance, and 100% payment are required before the Premises will be reserved. Studio contact: Shawn Laska · (626) 844-0022 · shawn@theagencies.net"}
+]

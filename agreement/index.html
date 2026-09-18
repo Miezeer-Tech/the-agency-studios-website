@@ -1,0 +1,187 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Rental Agreement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+<style>
+  .doc { max-width: 880px; margin: 0 auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(24px, 4vw, 56px); }
+  .doc-head { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 8px; }
+  .doc-head .co { font-size: 13px; color: var(--mute); margin-top: 6px; }
+  .doc h2 { font-size: 17px; margin: 32px 0 10px; letter-spacing: 0; }
+  .doc h3 { font-size: 15px; margin: 22px 0 8px; }
+  .doc p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin-bottom: 10px; text-wrap: pretty; }
+  .doc ul { margin: 0 0 10px; padding-left: 22px; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+  .doc .f { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px 16px; margin: 12px 0 16px; }
+  .doc label { display: grid; gap: 5px; font-size: 13px; color: var(--mute); }
+  .doc label b { font-weight: 500; color: var(--ink-2); }
+  .doc input, .doc select { font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 12px; width: 100%; min-width: 0; }
+  .doc input:focus, .doc select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .row { display: grid; grid-template-columns: minmax(180px, 1.2fr) repeat(auto-fit, minmax(90px, 1fr)); gap: 8px 12px; align-items: end; padding: 8px 0; border-top: 1px solid var(--line); }
+  .row .rl { font-size: 14px; font-weight: 500; color: var(--ink); align-self: center; }
+  .row label { font-size: 12px; }
+  .row input { padding: 7px 10px; font-size: 14px; }
+  .tbl { overflow-x: auto; margin: 8px 0 16px; }
+  .tbl table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  .tbl th { text-align: left; font-weight: 500; color: var(--mute); padding: 6px 6px; border-bottom: 1px solid var(--line); }
+  .tbl td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+  .tbl td:first-child { font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .tbl input, .tbl select { padding: 6px 8px; font-size: 13px; border-radius: 8px; }
+  .sig { margin: 14px 0 20px; }
+  .sig .pad { position: relative; aspect-ratio: 4 / 1; background: var(--bg); border: 1px dashed var(--line-strong); border-radius: 12px; overflow: hidden; touch-action: none; }
+  .sig canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+  .sig .hint { position: absolute; left: 14px; bottom: 10px; font-size: 12px; color: var(--mute); pointer-events: none; }
+  .sig .pad::before { content: ""; position: absolute; left: 14px; right: 14px; bottom: 26px; border-top: 1px solid var(--line-strong); pointer-events: none; }
+  .sig .tools { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; font-size: 13px; color: var(--mute); }
+  .sig .tools button { font: 500 13px var(--text); color: var(--accent); background: none; border: 0; padding: 4px 0; cursor: pointer; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--ink-2); margin: 24px 0 18px; padding: 14px 16px; background: var(--accent-soft); border-radius: 12px; }
+  .consent input { width: 18px; height: 18px; margin-top: 2px; flex: 0 0 auto; }
+  .send { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
+  .msg { margin-top: 12px; font-size: 14px; }
+  .msg.err { color: #B42318; } .msg.ok { color: #067647; }
+  .done { text-align: center; padding: 40px 0; }
+  .done h2 { margin: 0 0 12px; font-size: 26px; }
+  .page-top .head { max-width: 880px; margin: 0 auto clamp(20px, 3vw, 32px); }
+  .honey { position: absolute; left: -9999px; }
+  @media print { .nav, .foot, .send, .consent, .tools, .head .actions { display: none !important; } .doc { box-shadow: none; border: 0; padding: 0; } section { padding: 0; } }
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../index.html" aria-label="The Agency Studios home"><img src="../assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
+    <ul id="site-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../facility.html">Facility</a></li>
+      <li><a href="../podcast.html">Podcast Room</a></li>
+      <li><a href="../add-ons.html">Add-ons</a></li>
+      <li><a href="../schematic.html">Floor plans</a></li>
+      <li class="m-only"><a href="tel:+16268440028">626.844.0028</a></li>
+    </ul>
+    <a class="tel" href="tel:+16268440028">626.844.0028</a>
+    <a class="btn btn-primary" href="../book.html">Book the studio</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="page-top">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">For clients of The Agency Studios</p>
+        <h1>Studio Rental Agreement</h1>
+        <p class="lede">Read the agreement, fill in your details, and sign at the bottom. A signed PDF goes to the email you enter and to the studio. You can also <a href="../assets/Studio-Rental-Agreement-2026.pdf" download>download the blank PDF</a> to sign on paper.</p>
+      </div>
+
+      <form class="doc" id="agreement" novalidate>
+        <div class="doc-head">
+          <h2 style="margin:0;font-size:22px">STUDIO RENTAL AGREEMENT</h2>
+          <p class="co">Laska Entertainment, LLC · 270 W. Duarte Rd., Suite C, Monrovia, CA 91016<br>This Agreement is made as of the date signed below between the parties named herein.</p>
+        </div>
+        <div class="f">
+          <label><b>Your initials</b> (they go on every page of the PDF)<input name="Initials" maxlength="5" required style="max-width:120px"></label>
+        </div>
+        <div id="body"><p>Loading the agreement…</p></div>
+        <input class="honey" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="Consent" value="yes" required><span>I agree to sign this agreement electronically, that my drawn signature above is my legal signature, and that a copy will be emailed to me and to The Agency Studios.</span></label>
+        <div class="send">
+          <button class="btn btn-primary" type="submit">Sign and send the agreement</button>
+          <span class="small">Sent to the email above and to the studio</span>
+        </div>
+        <p class="msg" id="msg" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="legal">
+      <span>© 2026 The Agency Studios, Monrovia, California.</span>
+      <span><a href="tel:+16268440028">626.844.0028</a><a href="mailto:studio@theagencies.net">studio@theagencies.net</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Renders the agreement from agreement.json (the server builds the PDF from the same file), collects answers, and posts them.
+  const form = document.getElementById('agreement'), body = document.getElementById('body'), msg = document.getElementById('msg');
+  const pads = {};   // key -> {strokes, canvas, ctx}
+  const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); kids.forEach(k => e.append(k)); return e; };
+  const field = (name, type, required, small) => {
+    const l = el('label'); l.append(el('b', { textContent: name }));
+    let input;
+    if (Array.isArray(type)) { input = el('select', { name }); type.forEach(o => input.append(el('option', { textContent: o, value: o }))); }
+    else input = el('input', { name, type: type || 'text', required: !!required, autocomplete: type === 'email' ? 'email' : type === 'tel' ? 'tel' : 'off', step: type === 'number' ? 'any' : undefined, inputMode: type === 'number' ? 'decimal' : undefined });
+    l.append(input); return l;
+  };
+  const pad = (key, label) => {
+    const wrap = el('div', { className: 'sig' }), box = el('div', { className: 'pad' }), c = el('canvas'), hint = el('span', { className: 'hint', textContent: 'Draw your signature here with a mouse, finger, or stylus' });
+    const tools = el('div', { className: 'tools' }, el('span', { textContent: label }), el('button', { type: 'button', textContent: 'Clear' }));
+    box.append(c, hint); wrap.append(box, tools);
+    const ctx = c.getContext('2d'), p = pads[key] = { strokes: [], canvas: c, ctx };
+    const size = () => { const r = box.getBoundingClientRect(); c.width = r.width * devicePixelRatio; c.height = r.height * devicePixelRatio; redraw(); };
+    const redraw = () => { ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); ctx.clearRect(0, 0, c.width, c.height); ctx.lineWidth = 2.2; ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = '#111214'; const w = c.width / devicePixelRatio, h = c.height / devicePixelRatio; p.strokes.forEach(s => { ctx.beginPath(); s.forEach(([x, y], i) => ctx[i ? 'lineTo' : 'moveTo'](x * w, y * h)); ctx.stroke(); }); hint.style.display = p.strokes.length ? 'none' : ''; };
+    let cur = null;
+    const pt = e => { const r = c.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
+    c.addEventListener('pointerdown', e => { e.preventDefault(); c.setPointerCapture(e.pointerId); cur = [pt(e)]; p.strokes.push(cur); redraw(); });
+    c.addEventListener('pointermove', e => { if (cur) { cur.push(pt(e)); redraw(); } });
+    const up = () => { if (cur && cur.length === 1) cur.push([cur[0][0] + 0.002, cur[0][1]]); cur = null; };
+    c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up);
+    tools.querySelector('button').addEventListener('click', () => { p.strokes = []; redraw(); });
+    new ResizeObserver(size).observe(box);
+    return wrap;
+  };
+
+  fetch('agreement.json').then(r => r.json()).then(doc => {
+    body.textContent = '';
+    doc.forEach(b => {
+      if (b.h) body.append(el('h2', { textContent: b.h }));
+      else if (b.sub) body.append(el('h3', { textContent: b.sub }));
+      else if (b.p) body.append(el('p', { textContent: b.p }));
+      else if (b.ul) { const u = el('ul'); b.ul.forEach(t => u.append(el('li', { textContent: t }))); body.append(u); }
+      else if (b.fields) { const g = el('div', { className: 'f' }); b.fields.forEach(([n, t, r]) => g.append(field(n, t, r))); body.append(g); }
+      else if (b.row) { const r = el('div', { className: 'row' }, el('div', { className: 'rl', textContent: b.row })); b.cols.forEach(([n, t]) => r.append(field(b.row + ' · ' + n, t))); body.append(r); }
+      else if (b.table) {
+        const t = el('table'), head = el('tr', {}, el('th', { textContent: 'Item' })); b.table.cols.forEach(([n]) => head.append(el('th', { textContent: n }))); t.append(head);
+        b.table.rows.forEach(name => { const tr = el('tr', {}, el('td', { textContent: name })); b.table.cols.forEach(([n, ty, opts]) => { const td = el('td'); const f = field(name + ' · ' + n, ty === 'select' ? opts : ty); f.querySelector('b').remove(); f.querySelector('input,select').setAttribute('aria-label', name + ' ' + n); td.append(f); tr.append(td); }); t.append(tr); });
+        body.append(el('div', { className: 'tbl' }, t));
+      }
+      else if (b.sig) body.append(pad(b.sig, b.label));
+    });
+  }).catch(() => { body.textContent = 'The agreement could not be loaded. Please reload the page or call 626.844.0028.'; });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    msg.className = 'msg'; msg.textContent = '';
+    if (!form.reportValidity()) return;
+    const missing = [];
+    if (!pads.renter || !pads.renter.strokes.length) missing.push('the renter signature');
+    if (form.elements['Guarantor Name'].value.trim() && !pads.guarantor.strokes.length) missing.push('the guarantor signature');
+    if (missing.length) { msg.className = 'msg err'; msg.textContent = 'Please add ' + missing.join(' and ') + '.'; return; }
+    const fields = {};
+    for (const i of form.elements) if (i.name && i.name !== 'website' && !(i.type === 'checkbox' && !i.checked) && i.value.trim() !== '') fields[i.name] = i.value.trim();
+    const sigs = Object.fromEntries(Object.entries(pads).map(([k, p]) => [k, p.strokes.map(s => s.map(([x, y]) => [+x.toFixed(4), +y.toFixed(4)]))]));
+    const btn = form.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const r = await fetch('../api/agreement.php', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fields, sigs, website: form.website.value }) });
+      const j = await r.json();
+      if (!j.ok) throw new Error(j.error || 'Could not send');
+      form.innerHTML = '<div class="done"><h2>Signed and sent.</h2><p class="lede" style="margin:0 auto">' + (j.emailed ? 'A copy of the signed agreement is on its way to <b>' + fields['Email'].replace(/</g, '&lt;') + '</b> and to the studio.' : 'The agreement was recorded (#' + j.id + '). The email could not go out just now, so the studio will send your copy by hand.') + ' Shawn will countersign and return the fully executed copy once payment and the Certificate of Insurance are in.</p></div>';
+      scrollTo({ top: form.getBoundingClientRect().top + scrollY - 120, behavior: 'smooth' });
+    } catch (err) {
+      msg.className = 'msg err'; msg.textContent = (err.message || 'Something went wrong.') + ' Try again, or print this page (it prints with your signature) and email it to studio@theagencies.net.';
+      btn.disabled = false; btn.textContent = 'Sign and send the agreement';
+    }
+  });
+
+  (() => {
+    const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn'), list = nav.querySelector('ul');
+    const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };
+    btn.addEventListener('click', () => set(!nav.classList.contains('open')));
+    list.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+    matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) set(false); });
+  })();
+</script>

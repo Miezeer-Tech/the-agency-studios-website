@@ -27,6 +27,11 @@ if ($signedIn && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['status']
   db()->prepare('UPDATE bookings SET status = ? WHERE id = ?')->execute([$s, (int)$_POST['id']]);
   header('Location: ./?id=' . (int)$_POST['id']); exit;
 }
+if ($signedIn && isset($_GET['apdf'])) {
+  $a = db()->query('SELECT * FROM agreements WHERE id = ' . (int)$_GET['apdf'])->fetch(PDO::FETCH_ASSOC);
+  if ($a) { header('Content-Type: application/pdf'); header('Content-Disposition: inline; filename="studio-rental-agreement-' . $a['id'] . '.pdf"'); echo agreement_pdf($a); }
+  exit;
+}
 if ($signedIn && isset($_GET['pdf'])) {
   $b = db()->query('SELECT * FROM bookings WHERE id = ' . (int)$_GET['pdf'])->fetch(PDO::FETCH_ASSOC);
   if ($b) { header('Content-Type: application/pdf'); header('Content-Disposition: inline; filename="booking-request-' . $b['id'] . '.pdf"'); echo booking_pdf(booking_lines($b)); }
@@ -82,6 +87,7 @@ if ($signedIn && isset($_GET['pdf'])) {
 <?php else:
   $rows = db()->query('SELECT id, created_at, kind, name, email, phone, date, status, emailed FROM bookings ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);
   $sel = isset($_GET['id']) ? db()->query('SELECT * FROM bookings WHERE id = ' . (int)$_GET['id'])->fetch(PDO::FETCH_ASSOC) : null;
+  $agreements = db()->query('SELECT id, created_at, company, signer, email, phone, emailed FROM agreements ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="wrap">
   <div class="grid">
@@ -122,6 +128,22 @@ if ($signedIn && isset($_GET['pdf'])) {
       </form>
       <?php endif ?>
     </div>
+  </div>
+  <div class="card" style="margin-top:24px">
+    <h2>Signed agreements</h2>
+    <?php if (!$agreements): ?><p class="muted">None yet. Agreements signed at /agreement/ land here with their PDF.</p><?php else: ?>
+    <div class="tbl"><table>
+      <tr><th>#</th><th>Signed</th><th>Company</th><th>Signer</th><th>Email</th><th>Phone</th><th>Copies</th><th></th></tr>
+      <?php foreach ($agreements as $a): ?>
+      <tr>
+        <td><?= $a['id'] ?></td><td><?= $h($a['created_at']) ?></td><td><?= $h($a['company']) ?></td><td><?= $h($a['signer']) ?></td>
+        <td><a href="mailto:<?= $h($a['email']) ?>"><?= $h($a['email']) ?></a></td><td><?= $h($a['phone']) ?></td>
+        <td class="muted"><?= $a['emailed'] ? 'sent' : 'not sent' ?></td>
+        <td><a class="btn" href="./?apdf=<?= $a['id'] ?>" target="_blank" rel="noopener">PDF</a></td>
+      </tr>
+      <?php endforeach ?>
+    </table></div>
+    <?php endif ?>
   </div>
 </div>
 <?php endif ?>

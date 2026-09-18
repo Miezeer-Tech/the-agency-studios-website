@@ -52,6 +52,7 @@
               <button class="spot" type="button" data-id="multi" style="left:54.5%;top:58%" aria-label="Multi-use room"></button>
               <button class="spot" type="button" data-id="green" style="left:83%;top:36%" aria-label="Green rooms"></button>
               <button class="spot" type="button" data-id="kitchen" style="left:68.5%;top:36%" aria-label="Kitchenette"></button>
+              <button class="spot" type="button" data-id="talent" style="left:54.5%;top:72%" aria-label="Talent makeup bathroom"></button>
               <button class="spot" type="button" data-id="bath" style="left:51.5%;top:79%" aria-label="Private shower"></button>
               <button class="spot" type="button" data-id="storage" style="left:54.5%;top:88%" aria-label="Storage"></button>
               <button class="spot" type="button" data-id="offices" style="left:38%;top:55%" aria-label="Corporate offices"></button>
@@ -60,6 +61,7 @@
           </div>
           <figure class="spot-pop" id="spot-pop" aria-hidden="true"><img alt=""><figcaption></figcaption></figure>
         </div>
+          <p class="plan-toggle"><button class="btn btn-primary btn-sm" type="button" id="dots-toggle" aria-pressed="false">Remove Dot Indicators</button><span class="small">See the drawing on its own. The list still works.</span></p>
 
         <aside class="plan-info" aria-live="polite">
           <ol class="legend" id="legend">
@@ -79,8 +81,10 @@
               <p>Two green rooms off Stage 2 for wardrobe and hair-and-makeup, with lit mirrors and talent seating.</p></li>
             <li data-id="kitchen"><b>Kitchenette</b><span>Crafty and client hold</span><img src="assets/deck-kitchenette.jpg" alt="The kitchenette" loading="lazy">
               <p>A kitchenette beside the green rooms for craft services and coffee between setups.</p></li>
-            <li data-id="bath"><b>Private shower</b><span>Between the talent and crew bathrooms</span><img src="assets/deck-bathroom-shower.jpg" alt="The private shower" loading="lazy">
-              <p>A private shower for talent, with the talent makeup bathroom on one side and a separate crew bathroom on the other, all off the stage corridor.</p></li>
+            <li data-id="talent"><b>Talent makeup bathroom</b><span>Bathroom and changing room</span><img src="assets/deck-bathroom-dressing.jpg" alt="Private dressing room with an adjoining ADA-compliant bathroom" loading="lazy">
+              <p>Studio bathroom one: a private dressing room with an adjoining ADA-compliant bathroom, right off the stage corridor for talent.</p></li>
+            <li data-id="bath"><b>Private shower</b><span>Bathroom with adjoining shower</span><img src="assets/deck-bathroom-shower.jpg" alt="The private shower" loading="lazy">
+              <p>Studio bathroom two: a bathroom with an adjoining shower, between the talent bathroom and the crew bathroom.</p></li>
             <li data-id="storage"><b>Storage</b><span>Cases and stands</span>
               <p>Storage for cases, stands, and expendables so the stage floor stays clear.</p></li>
             <li data-id="offices"><b>Corporate offices</b><span>No production access</span><img src="assets/deck-exec-lobby-a.jpg" alt="Office lobby" loading="lazy">
@@ -116,8 +120,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
-          <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
-          <li><a href="mailto:Studio@theagencies.net">Studio@theagencies.net</a></li>
+          <li><a href="mailto:studio@theagencies.net">studio@theagencies.net</a></li>
           <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
@@ -199,6 +202,10 @@
   const hide = () => pop.classList.remove('show');
   spots.forEach(s => { s.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') show(s); }); s.addEventListener('pointerleave', hide); s.addEventListener('focus', () => show(s)); s.addEventListener('blur', hide); });
   vp.addEventListener('scroll', hide, { passive: true });
+
+  // Hide the dots to read the drawing clean.
+  const toggle = document.getElementById('dots-toggle');
+  toggle.addEventListener('click', () => { const off = stage.classList.toggle('no-dots'); toggle.textContent = off ? 'Show Dot Indicators' : 'Remove Dot Indicators'; toggle.setAttribute('aria-pressed', String(off)); hide(); });
   items.forEach(li => li.addEventListener('click', () => {
     select(li.dataset.id);
     const s = spots.find(s => s.dataset.id === li.dataset.id);
