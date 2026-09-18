@@ -273,6 +273,7 @@ input:focus, select:focus { outline: 0; border-color: var(--accent); box-shadow:
 /* inner pages */
 .page-top { padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 72px)); }
 .kicker { font-size: 14px; font-weight: 500; color: var(--mute); }
+.tiles + .cols2 { margin-top: 36px; }
 .cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 40px; align-items: start; margin-bottom: 28px; }
 .tiles + .plan-img, .tiles + p { margin-top: 24px; }
 .shops-wrap { margin-top: 36px; } .shops-wrap h3 { margin-bottom: 14px; }
