@@ -61,7 +61,7 @@ section.flush { padding-top: 0; }
 @media (max-width: 1040px) { .nav .tel { display: none; } }
 @media (max-width: 860px) {
   .menu-btn { display: block; } .nav li.m-only { display: block; } .nav .btn { margin-left: auto; }
-  .nav ul { display: grid; position: fixed; left: 0; right: 0; top: var(--nav-h); margin: 0; padding: 4px clamp(20px, 4vw, 48px) 16px; background: rgba(255,255,255,.96); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity 180ms var(--ease-out), transform 200ms var(--ease-out); }
+  .nav ul { display: grid; position: absolute; left: 0; right: 0; top: 100%; height: calc(100dvh - var(--nav-h)); align-content: start; overflow-y: auto; margin: 0; padding: 4px clamp(20px, 4vw, 48px) 16px; background: #FFFFFF; border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity 180ms var(--ease-out), transform 200ms var(--ease-out); }
   .nav.open ul { opacity: 1; transform: none; pointer-events: auto; }
   .nav ul li { border-top: 1px solid var(--line); } .nav ul li:first-child { border-top: 0; }
   .nav ul a { display: block; padding: 14px 0; font-size: 17px; border-bottom: 0; }
