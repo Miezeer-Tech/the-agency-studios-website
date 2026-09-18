@@ -53,7 +53,17 @@
       </div>
       <div class="rooms">
         <article class="room">
-          <img src="assets/deck-main-cyc-a.jpg" alt="Stage 1's white two-wall cyc under the lighting grid" loading="lazy">
+          <figure>
+            <div class="slides" data-carousel tabindex="0" aria-label="Main Stage photos">
+              <img src="assets/deck-main-cyc-a.jpg" alt="Stage 1's white two-wall cyc under the lighting grid" loading="lazy">
+              <img src="assets/deck-main-cyc-c.jpg" alt="Stage 1 from the perimeter, showing the black walls and roll-up doors beside the cyc" loading="lazy">
+              <img src="assets/deck-main-chroma-green.jpg" alt="Stage 1 painted chroma green" loading="lazy">
+              <img src="assets/deck-main-chroma-blue.jpg" alt="Stage 1 painted chroma blue" loading="lazy">
+              <img src="assets/deck-main-black-drapes-a.jpg" alt="Stage 1 with the black drapes pulled across both walls" loading="lazy">
+              <img src="assets/deck-main-green-drapes-a.jpg" alt="Stage 1 with the digi-green drapes covering both walls" loading="lazy">
+            </div>
+            <span class="count"></span><div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
+          </figure>
           <div class="body">
             <p class="kicker">Stage 1</p>
             <h3>Main Stage</h3>
@@ -67,7 +77,15 @@
           </div>
         </article>
         <article class="room">
-          <img src="assets/deck-insert-green-b.jpg" alt="The insert stage's pre-lit green cyc wall" loading="lazy">
+          <figure>
+            <div class="slides" data-carousel tabindex="0" aria-label="Insert Stage photos">
+              <img src="assets/deck-insert-green-b.jpg" alt="The insert stage's pre-lit green cyc wall" loading="lazy">
+              <img src="assets/deck-insert-green-a.jpg" alt="The insert stage seen from the open area, cyc lit green" loading="lazy">
+              <img src="assets/deck-insert-white-a.jpg" alt="The open staging area beside the green cyc with white walls" loading="lazy">
+              <img src="assets/deck-insert-white-b.jpg" alt="The staging area with a full-length mirror and a sofa" loading="lazy">
+            </div>
+            <span class="count"></span><div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
+          </figure>
           <div class="body">
             <p class="kicker">Stage 2</p>
             <h3>Insert Stage</h3>
@@ -263,6 +281,18 @@
   </div>
 </footer>
 
+<script>
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-carousel]').forEach(s => {
+    const box = s.parentElement, n = s.children.length, count = box.querySelector('.count');
+    const at = () => Math.round(s.scrollLeft / s.clientWidth);
+    const go = d => s.scrollTo({ left: ((at() + d + n) % n) * s.clientWidth, behavior: reduced ? 'auto' : 'smooth' });
+    box.querySelector('.prev').addEventListener('click', () => go(-1));
+    box.querySelector('.next').addEventListener('click', () => go(1));
+    s.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); });
+    if (count) { const upd = () => count.textContent = (at() + 1) + ' / ' + n; s.addEventListener('scroll', upd, { passive: true }); upd(); }
+  });
+</script>
 <script>
   const v = document.getElementById('hero-video');
   v.addEventListener('loadeddata', () => v.classList.add('ready'));

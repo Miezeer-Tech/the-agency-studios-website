@@ -58,7 +58,7 @@
             <img src="assets/deck-main-green-drapes-a.jpg" alt="Stage 1 with the digi-green drapes covering both walls" loading="lazy">
             <img src="assets/deck-main-cyc-d.jpg" alt="The curve of the cyc from the stage floor" loading="lazy">
           </div>
-          <div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
+          <span class="count"></span><div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
         </figure>
         <div class="text">
           <p class="kicker">Stage 1 · Main stage</p>
@@ -106,7 +106,7 @@
             <img src="assets/deck-insert-white-a.jpg" alt="The open staging area beside the green cyc with white walls" loading="lazy">
             <img src="assets/deck-insert-white-b.jpg" alt="The staging area with a full-length mirror and a sofa" loading="lazy">
           </div>
-          <div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
+          <span class="count"></span><div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
         </figure>
       </article>
     </div>
@@ -295,13 +295,14 @@
 
 <script>
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.stage figure').forEach(fig => {
-    const s = fig.querySelector('[data-carousel]'); if (!s) return;
-    const n = s.children.length, at = () => Math.round(s.scrollLeft / s.clientWidth);
+  document.querySelectorAll('[data-carousel]').forEach(s => {
+    const box = s.parentElement, n = s.children.length, count = box.querySelector('.count');
+    const at = () => Math.round(s.scrollLeft / s.clientWidth);
     const go = d => s.scrollTo({ left: ((at() + d + n) % n) * s.clientWidth, behavior: reduced ? 'auto' : 'smooth' });
-    fig.querySelector('.prev').addEventListener('click', () => go(-1));
-    fig.querySelector('.next').addEventListener('click', () => go(1));
+    box.querySelector('.prev').addEventListener('click', () => go(-1));
+    box.querySelector('.next').addEventListener('click', () => go(1));
     s.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); });
+    if (count) { const upd = () => count.textContent = (at() + 1) + ' / ' + n; s.addEventListener('scroll', upd, { passive: true }); upd(); }
   });
 </script>
 <script>
