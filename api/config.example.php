@@ -19,6 +19,9 @@ return [
   'admin_user'      => 'Shawn@theagencies.net',
   'admin_pass_hash' => '',
 
+  // Public address of the site, used in the agreement links emailed to clients (no trailing slash).
+  'site_url' => 'https://theagencystudio.com',
+
   // Sites allowed to post bookings cross-origin. Same-origin (the site itself) always works.
   'allowed_origins' => ['https://theagencystudio.com', 'https://www.theagencystudio.com'],
 ];

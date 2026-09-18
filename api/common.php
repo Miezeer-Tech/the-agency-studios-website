@@ -32,12 +32,17 @@ function db(): PDO {
   )');
   $pdo->exec('CREATE TABLE IF NOT EXISTS agreements (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    slug TEXT NOT NULL UNIQUE,
     created_at TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT "sent",
     company TEXT NOT NULL,
-    signer TEXT NOT NULL,
+    contact TEXT,
     email TEXT NOT NULL,
     phone TEXT,
+    signer TEXT,
     payload TEXT NOT NULL,
+    signed_at TEXT,
+    link_emailed INTEGER NOT NULL DEFAULT 0,
     emailed INTEGER NOT NULL DEFAULT 0
   )');
   return $pdo;
@@ -140,7 +145,7 @@ function agreement_lines(array $a): array {
   $v = fn(string $k) => trim((string)($f[$k] ?? ''));
   $blank = fn(string $k) => $v($k) !== '' ? $v($k) : '________';
   $doc = json_decode(file_get_contents(__DIR__ . '/../agreement/agreement.json'), true) ?: [];
-  $lines = ["\x01H STUDIO RENTAL AGREEMENT", 'This Agreement is made as of the date signed below between the parties named herein.', 'Agreement #' . $a['id'] . '  |  Signed ' . $a['created_at'] . ' (Pacific)', ''];
+  $lines = ["\x01H STUDIO RENTAL AGREEMENT", 'This Agreement is made as of the date signed below between the parties named herein.', 'Agreement ' . $a['slug'] . '  |  Sent by the studio ' . $a['created_at'] . '  |  Signed ' . ($a['signed_at'] ?? 'not yet') . ' (Pacific)', ''];
   foreach ($doc as $b) {
     if (isset($b['h'])) { $lines[] = ''; $lines[] = "\x01H " . $b['h']; }
     elseif (isset($b['sub'])) { $lines[] = ''; $lines[] = "\x01B " . $b['sub']; }
@@ -164,13 +169,73 @@ function agreement_lines(array $a): array {
       $who = $b['sig'];
       if ($who === 'guarantor' && $v('Guarantor Name') === '') { $lines[] = 'Not applicable: no guarantor named.'; continue; }
       $lines[] = "\x01SIG $who";
-      $lines[] = 'Signed by ' . ($who === 'renter' ? $blank('Authorized Signer (print)') : $blank('Guarantor Name')) . '   Date: ' . substr($a['created_at'], 0, 10);
+      $lines[] = 'Signed by ' . ($who === 'renter' ? $blank('Authorized Signer (print)') : $blank('Guarantor Name')) . '   Date: ' . substr((string)$a['signed_at'], 0, 10);
     }
   }
   $lines[] = ''; $lines[] = "\x01B Electronic signature record";
-  $lines[] = 'Signed electronically on the studio website on ' . $a['created_at'] . ' (Pacific) from IP ' . ($f['_ip'] ?? '') . '. ' . 'The signer confirmed: "I agree to sign this agreement electronically and that this signature is legally binding."';
+  $lines[] = 'Signed electronically on the studio website on ' . $a['signed_at'] . ' (Pacific) from IP ' . ($f['_ip'] ?? '') . '. ' . 'The signer confirmed: "I agree to sign this agreement electronically and that this signature is legally binding."';
   $lines[] = 'Browser: ' . substr((string)($f['_ua'] ?? ''), 0, 160);
   return $lines;
+}
+
+function agreement_doc(): array { return json_decode(file_get_contents(__DIR__ . '/../agreement/agreement.json'), true) ?: []; }
+
+// Field names the studio fills before the link goes out (Exhibit A: rates, fees, amenities, totals).
+function studio_field_names(): array {
+  $names = [];
+  foreach (agreement_doc() as $b) {
+    if (($b['by'] ?? '') !== 'studio') continue;
+    if (isset($b['row'])) foreach ($b['cols'] as $col) $names[] = $b['row'] . ' · ' . $col[0];
+    if (isset($b['table'])) foreach ($b['table']['rows'] as $r) foreach ($b['table']['cols'] as $col) $names[] = $r . ' · ' . $col[0];
+  }
+  return $names;
+}
+
+function slugify(string $s): string {
+  $s = strtolower(trim(@iconv('UTF-8', 'ASCII//TRANSLIT', $s) ?: $s));
+  return trim(preg_replace('/[^a-z0-9]+/', '-', $s), '-') ?: 'agreement';
+}
+
+// Public link for a sent agreement: /agreement/<company>-<date>-<time>. cfg site_url wins; otherwise built from this request.
+function agreement_url(string $slug): string {
+  $c = cfg();
+  $base = rtrim($c['site_url'] ?? '', '/');
+  if ($base === '') {
+    $scheme = !empty($_SERVER['HTTPS']) ? 'https' : 'http';
+    $root = preg_replace('#/(admin|api)/.*$#', '', $_SERVER['SCRIPT_NAME'] ?? '');
+    $base = $scheme . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . rtrim($root, '/');
+  }
+  return $base . '/agreement/' . $slug;
+}
+
+// Studio step: save the rates and email the client their link. Returns the row.
+function create_agreement(array $studio, string $company, string $contact, string $email, string $phone = ''): array {
+  $allowed = array_flip(studio_field_names());
+  $fields = [];
+  foreach ($studio as $k => $v) { $v = trim((string)$v); if (isset($allowed[$k]) && $v !== '') $fields[$k] = substr($v, 0, 200); }
+  $fields['Renter / Production Company'] = $company;
+  $fields['Producer / Authorized Contact'] = $contact;
+  $fields['Email'] = $email;
+  if ($phone !== '') $fields['Phone'] = $phone;
+  $db = db();
+  $slug = $base = slugify($company) . '-' . date('Y-m-d-Hi');
+  for ($i = 2; $db->query("SELECT 1 FROM agreements WHERE slug = " . $db->quote($slug))->fetch(); $i++) $slug = "$base-$i";
+  $db->prepare('INSERT INTO agreements (slug, created_at, status, company, contact, email, phone, payload) VALUES (?,?,?,?,?,?,?,?)')
+     ->execute([$slug, date('Y-m-d H:i'), 'sent', $company, $contact, $email, $phone, json_encode($fields, JSON_UNESCAPED_UNICODE)]);
+  $id = (int)$db->lastInsertId();
+  return $db->query("SELECT * FROM agreements WHERE id = $id")->fetch(PDO::FETCH_ASSOC);
+}
+
+function send_agreement_link(array $a): ?string {
+  $c = cfg();
+  $url = agreement_url($a['slug']);
+  $f = json_decode($a['payload'], true) ?: [];
+  $total = $f['Discounted total (if applicable) · $'] ?? $f['Grand total · $'] ?? '';
+  $body = "Hello " . ($a['contact'] ?: $a['company']) . ",\n\nYour Studio Rental Agreement from The Agency Studios is ready to review and sign:\n\n$url\n\n"
+        . ($total !== '' ? "Total per Exhibit A: \$$total\n\n" : '')
+        . "The studio has filled in the rates and amenities. Open the link, complete your details, sign, and submit. A signed PDF copy comes back to this address and to the studio.\n\n"
+        . "Questions: Shawn Laska · (626) 844-0022 · " . ($c['to_email'] ?? '') . "\n\nThe Agency Studios · 270 W Duarte Rd, Suite C, Monrovia, CA 91016";
+  return send_mail($a['email'], $a['contact'] ?: $a['company'], 'Your Studio Rental Agreement from The Agency Studios', $body, [], [$c['to_email'] ?? '', $c['to_name'] ?? '']);
 }
 
 function agreement_pdf(array $a): string {
@@ -223,8 +288,8 @@ function send_agreement_email(array $a): ?string {
   $c = cfg();
   $pdf = agreement_pdf($a);
   $file = 'studio-rental-agreement-' . $a['id'] . '.pdf';
-  $subject = 'Studio Rental Agreement — ' . $a['company'] . ' (signed ' . substr($a['created_at'], 0, 10) . ')';
-  $body = "Studio Rental Agreement #{$a['id']}\nRenter: {$a['company']}\nSigned by: {$a['signer']} <{$a['email']}>\nSigned: {$a['created_at']} (Pacific)\n\nThe signed agreement is attached as a PDF. The studio countersigns and returns a fully executed copy once payment and the Certificate of Insurance are received.\n\nThe Agency Studios · 270 W Duarte Rd, Suite C, Monrovia, CA 91016 · 626.844.0028";
+  $subject = 'Studio Rental Agreement — ' . $a['company'] . ' (signed ' . substr((string)$a['signed_at'], 0, 10) . ')';
+  $body = "Studio Rental Agreement {$a['slug']}\nRenter: {$a['company']}\nSigned by: {$a['signer']} <{$a['email']}>\nSigned: {$a['signed_at']} (Pacific)\n\nThe signed agreement is attached as a PDF. The studio countersigns and returns a fully executed copy once payment and the Certificate of Insurance are received.\n\nThe Agency Studios · 270 W Duarte Rd, Suite C, Monrovia, CA 91016 · 626.844.0028";
   $e1 = send_mail($a['email'], $a['signer'], $subject, $body, [$file => $pdf], [$c['to_email'] ?? '', $c['to_name'] ?? '']);
   $e2 = send_mail($c['to_email'] ?? '', $c['to_name'] ?? '', $subject, $body . "\n\nOpen /admin/ on the website to see every signed agreement.", [$file => $pdf], [$a['email'], $a['signer']]);
   return $e1 ?? $e2;

@@ -1,0 +1,6 @@
+# /agreement/<company>-<date>-<time> serves the signing page; the page reads the code from the URL.
+RewriteEngine On
+RewriteBase /agreement/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^[a-z0-9-]+/?$ index.html [L]

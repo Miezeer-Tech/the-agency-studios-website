@@ -9,11 +9,17 @@ The site is static HTML except for three PHP pieces: `api/booking.php` (receives
    - `admin_pass_hash`: run this on any machine with PHP and paste the output:
      `php -r "echo password_hash('choose-a-password', PASSWORD_DEFAULT), PHP_EOL;"`
 3. Make sure `api/data/` is writable by PHP (755 usually works on GoDaddy; use 775 if bookings fail to save).
-4. Send a test booking from `/podcast.html#book`, and sign a test agreement at `/agreement/` (the signer gets `studio-rental-agreement-1.pdf`, and so does `to_email`).
-5. Send clients the agreement as `https://theagencystudio.com/agreement/`. It is not linked from anywhere on the site and carries a noindex tag.
+4. Send a test booking from `/podcast.html#book`. Shawn should get a plain-text email with `booking-request-1.pdf` attached, and the request appears at `/admin/`.
+5. Set `site_url` in `api/config.php` to the live address so agreement links are right.
 
-The original blank agreement template lives at `assets/Studio-Rental-Agreement-2026.pdf` and is linked from that page for anyone who prefers paper. The agreement text itself lives once, in `agreement/agreement.json`; the page and the PDF both read it, so edit it there.
-6. Old step 4 continues: check the booking email and the request in `/admin/`. Shawn should get a plain-text email with `booking-request-1.pdf` attached, and the request appears at `/admin/`.
+## Rental agreements
+
+1. In `/admin/`, open **New agreement**, fill in Exhibit A (rates, fees, amenities; totals compute themselves), enter the client's company and email, and save. The agreement is created at `/agreement/<company>-<date>-<time>` and that link is emailed to the client. It is not linked from anywhere on the site and the page carries a noindex tag.
+2. The client opens the link, sees the studio's numbers locked in, fills in their blanks with the **Next** button, draws a signature, and submits.
+3. Both the client and `to_email` get `studio-rental-agreement-<n>.pdf`. The admin list shows every agreement as **not signed** or **signed**, with a PDF button once signed and a **Resend link** button before.
+4. If terms change, create a new agreement; the date and time in the link tell the versions apart. A signed link cannot be signed twice.
+
+The agreement text lives once, in `agreement/agreement.json`; the page, the admin form, and the PDF all read it, so edit it there. `agreement/.htaccess` turns the clean link into the page on Apache. The original blank template is `assets/Studio-Rental-Agreement-2026.pdf`.
 
 Notes
 - `api/config.php` and `api/data/` are excluded from git on purpose. Never commit them.

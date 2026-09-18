@@ -46,6 +46,19 @@
   .done h2 { margin: 0 0 12px; font-size: 26px; }
   .page-top .head { max-width: 880px; margin: 0 auto clamp(20px, 3vw, 32px); }
   .honey { position: absolute; left: -9999px; }
+  .doc .locked { display: grid; gap: 4px; font-size: 13px; color: var(--mute); }
+  .doc .locked b { font-weight: 500; color: var(--ink-2); }
+  .doc .locked span { font-size: 15px; color: var(--ink); padding: 9px 12px; background: var(--tint); border-radius: 10px; min-height: 40px; }
+  .row .locked span, .tbl .locked span { padding: 6px 10px; font-size: 14px; min-height: 0; }
+  .tbl .locked b { display: none; }
+  .doc .total { font-size: 18px; font-weight: 600; color: var(--ink); }
+  .nextbar { position: sticky; bottom: 16px; z-index: 5; display: flex; gap: 12px; align-items: center; justify-content: space-between; margin: 24px auto 0; max-width: 880px; padding: 12px 12px 12px 18px; background: var(--foot); color: var(--foot-text); border-radius: 999px; box-shadow: 0 12px 32px rgba(0,0,0,.28); font-size: 14px; }
+  .nextbar[hidden] { display: none; }
+  .nextbar .btn { min-height: 40px; }
+  .nextbar .left { display: grid; gap: 1px; min-width: 0; } .nextbar .left b { font-weight: 600; } .nextbar .left span { color: rgba(255,255,255,.6); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .doc input.need { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,95,230,.15); }
+  .gate { text-align: center; padding: 48px 20px; }
+  .gate h2 { font-size: 24px; margin-bottom: 10px; }
   @media print { .nav, .foot, .send, .consent, .tools, .head .actions { display: none !important; } .doc { box-shadow: none; border: 0; padding: 0; } section { padding: 0; } }
 </style>
 
@@ -72,7 +85,7 @@
       <div class="head">
         <p class="kicker">For clients of The Agency Studios</p>
         <h1>Studio Rental Agreement</h1>
-        <p class="lede">Read the agreement, fill in your details, and sign at the bottom. A signed PDF goes to the email you enter and to the studio. You can also <a href="../assets/Studio-Rental-Agreement-2026.pdf" download>download the blank PDF</a> to sign on paper.</p>
+        <p class="lede">The studio has filled in the rates and amenities for your booking. Fill in the highlighted blanks, sign at the bottom, and submit. A signed PDF goes to your email and to the studio. Prefer paper? <a href="../assets/Studio-Rental-Agreement-2026.pdf" download>Download the blank PDF</a>.</p>
       </div>
 
       <form class="doc" id="agreement" novalidate>
@@ -88,11 +101,12 @@
         <input class="honey" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="consent"><input type="checkbox" name="Consent" value="yes" required><span>I agree to sign this agreement electronically, that my drawn signature above is my legal signature, and that a copy will be emailed to me and to The Agency Studios.</span></label>
         <div class="send">
-          <button class="btn btn-primary" type="submit">Sign and send the agreement</button>
+          <button class="btn btn-primary" type="submit">Agree, sign and submit</button>
           <span class="small">Sent to the email above and to the studio</span>
         </div>
         <p class="msg" id="msg" aria-live="polite"></p>
       </form>
+      <div class="nextbar" id="nextbar" hidden><div class="left"><b id="next-label">Next</b><span id="next-hint"></span></div><button class="btn btn-primary" type="button" id="next-btn">Next</button></div>
     </div>
   </section>
 </main>
@@ -136,23 +150,60 @@
     return wrap;
   };
 
-  fetch('agreement.json').then(r => r.json()).then(doc => {
+  const slug = (location.pathname.match(/\/agreement\/([a-z0-9-]+)\/?$/) || [])[1] || new URLSearchParams(location.search).get('a') || '';
+  const money = v => { const n = parseFloat(String(v).replace(/[^0-9.]/g, '')); return isNaN(n) ? v : '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
+  const locked = (name, label, value, isMoney) => { const d = el('div', { className: 'locked' }); d.append(el('b', { textContent: label }), el('span', { textContent: value === undefined || value === '' ? '—' : (isMoney ? money(value) : value) })); return d; };
+
+  Promise.all([fetch('agreement.json').then(r => r.json()), slug ? fetch('../api/agreement.php?slug=' + encodeURIComponent(slug)).then(r => r.json()) : Promise.resolve(null)]).then(([doc, ag]) => {
+    if (!ag || !ag.ok) { form.innerHTML = '<div class="gate"><h2>' + (ag ? 'This link has expired.' : 'This page needs your agreement link.') + '</h2><p class="lede" style="margin:0 auto">' + (ag ? ag.error : 'The studio emails each client a personal link that opens their agreement with the rates filled in. Check the email from The Agency Studios, or call 626.844.0028.') + '</p></div>'; return; }
+    if (ag.status === 'signed') { form.innerHTML = '<div class="gate"><h2>Already signed.</h2><p class="lede" style="margin:0 auto">This agreement for <b>' + ag.company.replace(/</g, '&lt;') + '</b> was signed on ' + ag.signed + '. Both parties have the PDF. If something changed, the studio will send a new link.</p></div>'; return; }
+    const sf = ag.fields || {}, isStudio = new Set(ag.studio || []);
     body.textContent = '';
     doc.forEach(b => {
       if (b.h) body.append(el('h2', { textContent: b.h }));
       else if (b.sub) body.append(el('h3', { textContent: b.sub }));
       else if (b.p) body.append(el('p', { textContent: b.p }));
       else if (b.ul) { const u = el('ul'); b.ul.forEach(t => u.append(el('li', { textContent: t }))); body.append(u); }
-      else if (b.fields) { const g = el('div', { className: 'f' }); b.fields.forEach(([n, t, r]) => g.append(field(n, t, r))); body.append(g); }
-      else if (b.row) { const r = el('div', { className: 'row' }, el('div', { className: 'rl', textContent: b.row })); b.cols.forEach(([n, t]) => r.append(field(b.row + ' · ' + n, t))); body.append(r); }
+      else if (b.fields) { const g = el('div', { className: 'f' }); b.fields.forEach(([n, t, r]) => { const f = field(n, t, r); if (sf[n]) f.querySelector('input,select').value = sf[n]; g.append(f); }); body.append(g); }
+      else if (b.row) {
+        const r = el('div', { className: 'row' }, el('div', { className: 'rl', textContent: b.row }));
+        const any = b.cols.some(([n]) => sf[b.row + ' · ' + n]);
+        b.cols.forEach(([n, t]) => { const k = b.row + ' · ' + n; const d = locked(k, n, sf[k], /\$/.test(n)); if (/total/i.test(b.row) && sf[k]) d.querySelector('span').classList.add('total'); r.append(d); });
+        if (!any) r.style.opacity = '.55';
+        body.append(r);
+      }
       else if (b.table) {
         const t = el('table'), head = el('tr', {}, el('th', { textContent: 'Item' })); b.table.cols.forEach(([n]) => head.append(el('th', { textContent: n }))); t.append(head);
-        b.table.rows.forEach(name => { const tr = el('tr', {}, el('td', { textContent: name })); b.table.cols.forEach(([n, ty, opts]) => { const td = el('td'); const f = field(name + ' · ' + n, ty === 'select' ? opts : ty); f.querySelector('b').remove(); f.querySelector('input,select').setAttribute('aria-label', name + ' ' + n); td.append(f); tr.append(td); }); t.append(tr); });
+        b.table.rows.forEach(name => { const tr = el('tr', {}, el('td', { textContent: name })); const any = b.table.cols.some(([n]) => sf[name + ' · ' + n] && sf[name + ' · ' + n] !== 'N/A'); if (!any) tr.style.opacity = '.55'; b.table.cols.forEach(([n]) => { const k = name + ' · ' + n; tr.append(el('td', {}, locked(k, n, sf[k] || (n === 'Status' ? 'N/A' : ''), /\$/.test(n)))); }); t.append(tr); });
         body.append(el('div', { className: 'tbl' }, t));
       }
       else if (b.sig) body.append(pad(b.sig, b.label));
     });
+    nextbar.hidden = false; refreshNext();
   }).catch(() => { body.textContent = 'The agreement could not be loaded. Please reload the page or call 626.844.0028.'; });
+
+  // "Next" walks through every blank the client still has to fill, then the signature, then the submit button.
+  const nextbar = document.getElementById('nextbar'), nextBtn = document.getElementById('next-btn'), nextLabel = document.getElementById('next-label'), nextHint = document.getElementById('next-hint');
+  const pending = () => {
+    const out = [];
+    for (const i of form.querySelectorAll('input[required], input[type=checkbox][required]')) { if (i.type === 'checkbox' ? !i.checked : !i.value.trim()) out.push({ el: i, label: i.type === 'checkbox' ? 'Tick the consent box' : (i.closest('label')?.querySelector('b')?.textContent || i.closest('label')?.textContent.trim() || i.name) }); }
+    if (pads.renter && !pads.renter.strokes.length) out.push({ el: pads.renter.canvas, label: 'Draw your signature' });
+    if (form.elements['Guarantor Name']?.value.trim() && pads.guarantor && !pads.guarantor.strokes.length) out.push({ el: pads.guarantor.canvas, label: 'Draw the guarantor signature' });
+    return out.sort((a, b) => a.el.compareDocumentPosition(b.el) & 2 ? 1 : -1);
+  };
+  const refreshNext = () => {
+    const list = pending();
+    form.querySelectorAll('input.need').forEach(i => i.classList.remove('need'));
+    list.forEach(p => p.el.classList && p.el.tagName === 'INPUT' && p.el.classList.add('need'));
+    if (list.length) { nextLabel.textContent = list.length + ' to fill in'; nextHint.textContent = 'Next: ' + list[0].label; nextBtn.textContent = 'Next'; }
+    else { nextLabel.textContent = 'All filled in'; nextHint.textContent = 'Review, then agree, sign and submit'; nextBtn.textContent = 'Agree, sign and submit'; }
+  };
+  nextBtn.addEventListener('click', () => {
+    const list = pending();
+    if (!list.length) { form.requestSubmit(); return; }
+    const t = list[0].el; t.scrollIntoView({ block: 'center', behavior: 'smooth' }); if (t.tagName === 'INPUT') t.focus({ preventScroll: true });
+  });
+  form.addEventListener('input', refreshNext); form.addEventListener('change', refreshNext); form.addEventListener('pointerup', () => setTimeout(refreshNext, 50));
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -167,14 +218,14 @@
     const sigs = Object.fromEntries(Object.entries(pads).map(([k, p]) => [k, p.strokes.map(s => s.map(([x, y]) => [+x.toFixed(4), +y.toFixed(4)]))]));
     const btn = form.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Sending…';
     try {
-      const r = await fetch('../api/agreement.php', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fields, sigs, website: form.website.value }) });
+      const r = await fetch('../api/agreement.php', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ slug, fields, sigs, website: form.website.value }) });
       const j = await r.json();
       if (!j.ok) throw new Error(j.error || 'Could not send');
-      form.innerHTML = '<div class="done"><h2>Signed and sent.</h2><p class="lede" style="margin:0 auto">' + (j.emailed ? 'A copy of the signed agreement is on its way to <b>' + fields['Email'].replace(/</g, '&lt;') + '</b> and to the studio.' : 'The agreement was recorded (#' + j.id + '). The email could not go out just now, so the studio will send your copy by hand.') + ' Shawn will countersign and return the fully executed copy once payment and the Certificate of Insurance are in.</p></div>';
+      nextbar.hidden = true; form.innerHTML = '<div class="done"><h2>Signed and sent.</h2><p class="lede" style="margin:0 auto">' + (j.emailed ? 'A copy of the signed agreement is on its way to <b>' + fields['Email'].replace(/</g, '&lt;') + '</b> and to the studio.' : 'The agreement was recorded (#' + j.id + '). The email could not go out just now, so the studio will send your copy by hand.') + ' Shawn will countersign and return the fully executed copy once payment and the Certificate of Insurance are in.</p></div>';
       scrollTo({ top: form.getBoundingClientRect().top + scrollY - 120, behavior: 'smooth' });
     } catch (err) {
       msg.className = 'msg err'; msg.textContent = (err.message || 'Something went wrong.') + ' Try again, or print this page (it prints with your signature) and email it to studio@theagencies.net.';
-      btn.disabled = false; btn.textContent = 'Sign and send the agreement';
+      btn.disabled = false; btn.textContent = 'Agree, sign and submit';
     }
   });
 
