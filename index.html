@@ -1,187 +1,173 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Agency Studios</title>
-<meta name="description" content="A full-service production studio in Monrovia, California. Two stages, a white cyc, a green-screen cyc, elephant doors, cam-lock power and truck parking.">
+<meta name="description" content="A full-service production studio in Monrovia, California. A 3,000 sq ft main stage with a two-wall cyc, a pre-lit green-screen insert stage, a podcast room, a vMix control room, 600 A power, and a secured lot.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="home.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
+    <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
     <ul id="site-menu">
-      <li><a href="#stages">Stages</a></li>
+      <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="facility.html">Facility</a></li>
-      <li><a href="#gallery">On Set</a></li>
-      <li><a href="#clients">Clients</a></li>
-      <li><a href="#podcast">Podcast</a></li>
-      <li class="m-only"><a href="safe-set.html">Safe Set</a></li>
-      <li class="m-only"><a href="schematic.html">Schematic</a></li>
+      <li><a href="podcast.html">Podcast Room</a></li>
+      <li><a href="add-ons.html">Add-ons</a></li>
+      <li><a href="schematic.html">Floor plans</a></li>
+      <li><a href="safe-set.html">Safe Set</a></li>
       <li class="m-only"><a href="tel:+16268440028">626.844.0028</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
-    <a class="btn btn-gold" href="book.html">Book the studio</a>
+    <a class="btn btn-primary" href="book.html">Book the studio</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
   </div>
 </header>
 
-<main id="top">
+<main>
 
   <section class="hero">
-    <div class="hero-film">
-      <div class="hero-push">
-        <img src="assets/elephant-doors.jpg" alt="The stage's tall double elephant doors, seen from the lot" fetchpriority="high">
-        <video id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-          <source src="assets/hero-loop.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="hero-spill" aria-hidden="true"></div>
-      <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/main-stage.jpg" alt="" fetchpriority="high">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto"><source src="assets/hero-loop.mp4" type="video/mp4"></video>
+      <div class="hero-shade"></div>
     </div>
-    <div class="hero-shade" aria-hidden="true"></div>
-    <div class="hero-copy">
-      <h1><span>Maximize Your Creativity</span></h1>
-      <p class="hero-sub">Don’t Let Space Reduce Your Vision</p>
-      <p class="hero-lede">A full-service production studio in Monrovia, California.</p>
-      <div class="hero-cta">
-        <a class="btn btn-pill btn-gold" href="book.html">Book the studio <span aria-hidden="true">&#8594;</span></a>
-        <a class="btn btn-pill btn-glass" href="#stages">Take the tour</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="stats">
     <div class="wrap">
-      <div><b>3,000 sq ft</b><span>Main stage, 20′ to grid</span></div>
-      <div><b>600 A</b><span>3-phase, cam-lock distro</span></div>
-      <div><b>35+ vehicles</b><span>Secured, monitored lot</span></div>
-      <div><b>200 Mb fiber</b><span>Turnkey vMix control room</span></div>
-    </div>
-  </section>
-
-  <section class="band" id="facility">
-    <div class="wrap">
-      <div class="head-2">
-        <div>
-          <h2 class="display">Everything a shoot needs, already on the lot.</h2>
+      <div class="hero-copy">
+        <h1>Maximize Your Creativity</h1>
+        <p class="sub">Don't Let Space Reduce Your Vision</p>
+        <p class="lede">A full-service production studio in Monrovia, California. Two stages, a podcast room, a control room, and everything a shoot needs on one lot.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="book.html">Book the studio</a>
+          <a class="btn btn-ghost" href="#rooms">See the rooms</a>
         </div>
-        <p class="lede">When you book stages closer to Hollywood you run into compromises. Newly built in Monrovia, The Agency Studios was designed so you don't have to make any. <a class="more" href="facility.html" style="margin-left:0;display:inline-block;margin-top:10px">Every room and spec</a></p>
-      </div>
-
-      <div class="tour" id="tour">
-        <div class="tour-stage">
-          <img class="on" src="assets/main-stage.jpg" alt="The main stage's seamless white cyc under a full lighting grid">
-          <img src="assets/elephant-doors.jpg" alt="The stage's tall double elephant doors, seen from the lot" loading="lazy">
-          <img src="assets/cyc-wide.jpg" alt="The overhead pipe grid above the white cyc" loading="lazy">
-          <img src="assets/gallery-2.jpg" alt="A canyon set lit from scissor lifts on the main stage" loading="lazy">
-          <img src="assets/gallery-4.jpg" alt="Crew watching a dancer on a dressed set under teal light" loading="lazy">
-          <img src="assets/green-room.jpg" alt="Hair and makeup room with lit mirrors, a leather couch and bar stools" loading="lazy">
-          <img src="assets/podcast-room.jpg" alt="The podcast room set with three cameras" loading="lazy">
-          <img src="assets/deck-control-room-b.jpg" alt="The control room with switching workstations and a window onto the stage" loading="lazy">
-          <div class="tour-cap"><p class="ttl" id="tour-title">Two stages, one lot</p></div>
-        </div>
-        <ol class="tour-list" id="tour-list">
-          <li class="on"><button type="button"><span class="row"><span class="num">01</span><span class="ttl">Two stages, one lot</span></span><span class="desc"><span>A main stage with a white cyc and an insert stage with a green-screen cyc, so you can double up on setups.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">02</span><span class="ttl">Elephant doors</span></span><span class="desc"><span>Drive-in load-in straight from the lot. Trucks, crew cars and a Technocrane all fit.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">03</span><span class="ttl">Overhead grid</span></span><span class="desc"><span>A massive pipe grid over the main stage. Rigging goes up fast and stays out of the shot.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">04</span><span class="ttl">Cam-lock power</span></span><span class="desc"><span>Tie in your distro without a generator. Lighting, camera, grip and distro packages on site.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">05</span><span class="ttl">Soundproofed, central air</span></span><span class="desc"><span>Record clean dialogue at noon in August. Restrooms, tables and chairs always available.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">06</span><span class="ttl">Client and talent holding</span></span><span class="desc"><span>A comfortable green room with lit hair-and-makeup stations, plus production offices when you need them.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">07</span><span class="ttl">Podcast room and fiber</span></span><span class="desc"><span>A dressed three-camera podcast set with a live switcher, and high-speed fiber for live broadcast.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-          <li><button type="button"><span class="row"><span class="num">08</span><span class="ttl">Turnkey control room</span></span><span class="desc"><span>vMix multi-cam switching for up to eight 4K cameras, OBS and LiveU encoders, a Behringer Wing board, and 200 Mb symmetrical fiber.</span></span><span class="bar"><span class="fill"></span></span></button></li>
-        </ol>
       </div>
     </div>
   </section>
 
-  <section class="band alt" id="stages">
+  <section id="rooms">
     <div class="wrap">
-      <div style="margin-bottom:clamp(40px,5vw,72px)">
-        <h2 class="display" style="max-width:26ch">Two stages and a podcast room. Pick the wall you need.</h2>
+      <div class="head">
+        <h2>Three rooms. Pick the one your shoot needs.</h2>
+        <p class="lede">Every room comes with parking, power, and support rooms. Full measurements are on the facility page.</p>
       </div>
-
-      <article class="stage">
-        <figure>
-          <div class="slides" data-carousel tabindex="0" aria-label="Main Stage photos">
-            <img src="assets/main-stage.jpg" alt="The main stage's seamless white cyc under a full lighting grid" loading="lazy">
-            <img src="assets/cyc-wide.jpg" alt="The white cyc from the stage floor, showing the full curve" loading="lazy">
-            <img src="assets/gallery-3.jpg" alt="A photo shoot on the white cyc with crew and lighting stands" loading="lazy">
-            <img src="assets/gallery-1.jpg" alt="The main stage cyc lit fully red for a jib shot" loading="lazy">
-            <img src="assets/gallery-2.jpg" alt="A canyon set built on the main stage, lit from scissor lifts" loading="lazy">
+      <div class="rooms">
+        <article class="room">
+          <img src="assets/deck-main-cyc-a.jpg" alt="Stage 1's white two-wall cyc under the lighting grid" loading="lazy">
+          <div class="body">
+            <p class="kicker">Stage 1</p>
+            <h3>Main Stage</h3>
+            <p>A seamless white two-wall cyc for clean product and fashion work. Paint it chroma green or blue, or drape it black for a set build.</p>
+            <div class="meta">
+              <div><b>3,000 sq ft</b>, 60′ × 53′</div>
+              <div><b>47′ × 43′ cyc</b>, 20′ to the grid</div>
+              <div><b>600 A</b> 3-phase, cam-lock</div>
+            </div>
+            <div class="actions"><a class="btn btn-primary btn-sm" href="book.html">Book the studio</a><a class="more" href="facility.html#stage1">Every spec</a></div>
           </div>
-          <div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
-        </figure>
-        <div>
-          <p class="eyebrow quiet">Main Stage</p>
-          <h3>White cyc, black drapes, huge grid.</h3>
-          <p class="body">A seamless white cyclorama for clean product and fashion work, or drape it black and light from the grid for a set build of any size. This is where the Technocrane shoots happen.</p>
-          <dl class="spec">
-            <dt>Stage</dt><dd>3,000 sq ft, 60′ × 53′</dd>
-            <dt>Cyc</dt><dd>Two-wall, 47′ × 43′, 20′ to grid</dd>
-            <dt>Drapes</dt><dd>Seven 15′ × 20′ black, three 20′ × 40′ green</dd>
-            <dt>Paint</dt><dd>Chroma green, chroma blue, or any color</dd>
-            <dt>Power</dt><dd>600 A 3-phase, eight 20 A boxes above grid</dd>
-            <dt>Climate</dt><dd>Sound-roofed, quiet 10-ton A/C and heat</dd>
-            <dt>Load-in</dt><dd>Two soundproofed elephant doors</dd>
-          </dl>
-          <a class="btn btn-gold" href="book.html">Book the studio</a><a class="more" href="facility.html#stage1">Every spec</a>
-        </div>
-      </article>
-
-      <article class="stage flip">
-        <div>
-          <p class="eyebrow quiet">Insert Stage</p>
-          <h3>Green-screen cyc wall.</h3>
-          <p class="body">A pre-painted green cyc with its own lighting, so you can key while the main stage is still dressed. Ideal for inserts, interviews, VR capture and virtual sets.</p>
-          <dl class="spec">
-            <dt>Cyc</dt><dd>27′ single wall, pre-lit green</dd>
-            <dt>Grid</dt><dd>11′ to grid</dd>
-            <dt>Floor</dt><dd>1,128 sq ft, 24′ × 47′ with open staging</dd>
-            <dt>Power</dt><dd>Two 20 A above grid, six on the wall</dd>
-            <dt>Extras</dt><dd>Privacy drapes, full-length mirror, Bluetooth PA</dd>
-          </dl>
-          <a class="btn btn-line" href="book.html">Book the studio</a><a class="more" href="facility.html#stage2">Every spec</a>
-        </div>
-        <figure>
-          <div class="slides" data-carousel tabindex="0" aria-label="Insert Stage photos">
-            <img src="assets/insert-stage.jpg" alt="The insert stage's green-screen cyc wall, lit and ready" loading="lazy">
-            <img src="assets/gallery-5.jpg" alt="Two hosts on yellow chairs recording a show on the green screen" loading="lazy">
-            <img src="assets/gallery-7.jpg" alt="A performer in VR gloves on a mark in front of the green cyc" loading="lazy">
-            <img src="assets/gallery-6.jpg" alt="A living-room set on the insert stage lit green, monitor in the foreground" loading="lazy">
+        </article>
+        <article class="room">
+          <img src="assets/deck-insert-green-b.jpg" alt="The insert stage's pre-lit green cyc wall" loading="lazy">
+          <div class="body">
+            <p class="kicker">Stage 2</p>
+            <h3>Insert Stage</h3>
+            <p>A pre-lit green-screen cyc with open staging beside it. Key while the main stage is still dressed, or run both at once.</p>
+            <div class="meta">
+              <div><b>27′ cyc wall</b>, pre-lit green</div>
+              <div><b>1,128 sq ft</b>, 11′ to the grid</div>
+              <div><b>Privacy drapes</b>, mirror, Bluetooth PA</div>
+            </div>
+            <div class="actions"><a class="btn btn-primary btn-sm" href="book.html">Book the studio</a><a class="more" href="facility.html#stage2">Every spec</a></div>
           </div>
-          <div class="arrows"><button type="button" class="prev" aria-label="Previous photo">&#8249;</button><button type="button" class="next" aria-label="Next photo">&#8250;</button></div>
-        </figure>
-      </article>
+        </article>
+        <article class="room">
+          <img src="assets/podcast-room.jpg" alt="The podcast room set with a sofa, two armchairs, and three cameras" loading="lazy">
+          <div class="body">
+            <p class="kicker">Podcast Room</p>
+            <h3>Podcast Room</h3>
+            <p>A dressed set with three cameras, four mics, and a live switcher already patched in. Walk in with your guests and walk out with the episode.</p>
+            <div class="meta">
+              <div><b>Up to 4</b> Shure SM7B mics</div>
+              <div><b>3 cameras</b>, Panasonic HC-X1000</div>
+              <div><b>Live switcher</b>, broadcast ready</div>
+            </div>
+            <div class="actions"><a class="btn btn-primary btn-sm" href="podcast.html#book">Book the Podcast Room</a><a class="more" href="podcast.html">Details and rates</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-      <article class="stage stack" id="podcast">
-        <figure><img src="assets/podcast-room.jpg" alt="The podcast room: a cream sofa and two yellow armchairs on a slatted dark-wood wall, three cameras and boom mics set up" loading="lazy"></figure>
-        <div>
-          <p class="eyebrow quiet">Podcast Room</p>
-          <h3>Sit down, hit record, go live.</h3>
-          <p class="body">A dressed set with a three-camera setup, four mics and a live switcher already patched in. Walk in with your guests and walk out with the episode.</p>
-          <dl class="spec">
-            <dt>Mics</dt><dd>Up to 4 Shure SM7B</dd>
-            <dt>Cameras</dt><dd>3-camera, Panasonic HC-X1000</dd>
-            <dt>Switching</dt><dd>Live RØDECaster switcher</dd>
-            <dt>Display</dt><dd>On-screen for guests and graphics</dd>
-            <dt>Output</dt><dd>Live broadcast ready</dd>
+  <section class="tint">
+    <div class="wrap">
+      <div class="head">
+        <h2>Built by production professionals, for production professionals.</h2>
+        <p class="lede">When you book stages closer to Hollywood you run into compromises. Newly built in Monrovia, The Agency Studios was designed so you don't have to make any.</p>
+      </div>
+      <div class="stats reveal">
+        <div><b>3,000 sq ft</b><span>Main stage, 20′ to grid</span></div>
+        <div><b>600 A</b><span>3-phase, cam-lock distro</span></div>
+        <div><b>35+ vehicles</b><span>Secured, monitored lot</span></div>
+        <div><b>200 Mb fiber</b><span>Turnkey vMix control room</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <article class="feature reveal">
+        <figure><img src="assets/elephant-doors.jpg" alt="The stage's tall double elephant doors, seen from the lot" loading="lazy"></figure>
+        <div class="text">
+          <h2>Drive in, load in, tie in.</h2>
+          <p>Two loading bays with soundproofed elephant doors open straight onto Stage 1, one under an awning for rainy days. Trucks, crew cars, and a Technocrane all fit in the secured side lot. A 600 A three-phase company switch with cam-lock tie-in means no generator.</p>
+          <dl class="spec two">
+            <dt>Parking</dt><dd>35+ vehicles, lit, CCTV 24/7</dd>
+            <dt>Power</dt><dd>600 A 3-phase, distro available</dd>
+            <dt>Grid</dt><dd>20′, eight 20 A boxes above</dd>
+            <dt>Climate</dt><dd>Quiet 10-ton A/C and heat</dd>
           </dl>
-          <a class="btn btn-gold" href="podcast.html">See the Podcast Room</a><a class="more" href="podcast.html#book">Book it</a>
+          <div class="actions"><a class="more" href="facility.html#lot">Parking, load-in, and power</a></div>
+        </div>
+      </article>
+      <article class="feature flip reveal">
+        <figure><img src="assets/deck-control-room-b.jpg" alt="The control room with switching workstations and a window onto the stage" loading="lazy"></figure>
+        <div class="text">
+          <h2>A turnkey control room on symmetrical fiber.</h2>
+          <p>vMix multi-cam switching for up to eight 4K cameras, with redundant workstations, OBS and LiveU encoders, a Behringer Wing audio board, and 200 Mb fiber with two backup lines. Livestream from the stage the same day you load in.</p>
+          <div class="actions"><a class="more" href="facility.html#control">Full technical specs</a></div>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="gallery" id="gallery">
+  <section class="tint">
     <div class="wrap">
-      <h2 class="display">What has been built here.</h2>
+      <div class="head">
+        <h2>Everything off the stage floor.</h2>
+        <p class="lede">Makeup and wardrobe, a kitchenette, bathrooms with a shower, a DIT room with a window onto the stage, and production offices upstairs. Drapes, lifts, grip, lighting, and crew supplies are available as add-ons.</p>
+      </div>
+      <div class="tiles reveal">
+        <figure><img src="assets/deck-makeup-room.jpg" alt="Makeup room with two lit mirrors and stools" loading="lazy"><figcaption><b>Makeup and wardrobe</b> Two stations, lighted LED mirrors switchable between tungsten and daylight, full-length mirrors.</figcaption></figure>
+        <figure><img src="assets/deck-kitchenette.jpg" alt="Kitchenette with a stainless refrigerator and white cabinets" loading="lazy"><figcaption><b>Kitchenette</b> Refrigerator with filtered water and ice, microwave, and storage for craft services.</figcaption></figure>
+        <figure><img src="assets/deck-dit-room.jpg" alt="DIT room with a long desk and windows onto the stage" loading="lazy"><figcaption><b>DIT and tech room</b> Hardline internet, four 20 A boxes, and a smart TV on any camera or the live-switched output.</figcaption></figure>
+        <figure><img src="assets/deck-conference-a.jpg" alt="Conference room with a long table and a window onto the stage" loading="lazy"><figcaption><b>Production offices</b> A conference and podcast room, client holding, suites, and 9′ × 15′ rooms on the mezzanine.</figcaption></figure>
+      </div>
+      <p style="margin-top:24px;display:flex;gap:24px;flex-wrap:wrap"><a class="more" href="facility.html#rooms">All support rooms and offices</a><a class="more" href="add-ons.html">Add-ons and pricing</a></p>
+    </div>
+  </section>
+
+  <section id="gallery" style="padding-bottom:clamp(40px,5vw,72px)">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:24px">
+        <h2>What has been built here.</h2>
+      </div>
     </div>
     <ul class="rail" data-hidebar aria-label="Photos from productions at The Agency Studios">
       <li><img src="assets/set-orange-sofa.jpg" alt="Two hosts on an orange sofa set with a camera operator shooting handheld" loading="lazy"></li>
       <li><span class="crop"><img src="assets/set-magenta.jpg" alt="Two guests on cream armchairs on a magenta-lit podcast set" loading="lazy"></span></li>
       <li><img src="assets/set-purple.jpg" alt="A multi-camera talk-show set under purple light with neon signage" loading="lazy"></li>
-      <li><img src="assets/set-backdrop.jpg" alt="A dressed talk set with a painted backdrop and crew at video village" loading="lazy"></li>
+      <li><img src="assets/deck-bts-car-set.jpg" alt="A car on a purple-lit stage set with crew and lighting rigs" loading="lazy"></li>
       <li><img src="assets/gallery-1.jpg" alt="A camera operator on a jib films a performer against a fully red cyc" loading="lazy"></li>
       <li><img src="assets/gallery-2.jpg" alt="A canyon set with sculpted rock and a pool, lit from scissor lifts" loading="lazy"></li>
       <li><img src="assets/gallery-3.jpg" alt="A photo shoot on the white cyc with crew and lighting stands" loading="lazy"></li>
@@ -193,33 +179,23 @@
     </ul>
   </section>
 
-  <section class="band light">
+  <section class="tint">
     <div class="wrap">
-      <h2 class="quotes-head">“We do not have to compromise anything.”</h2>
-      <ul class="quotes" aria-label="Testimonials">
-        <li><blockquote>When we book stages closer to Hollywood we always run into compromises. We do not have to compromise anything when we use The Agency Studios.</blockquote><footer><b>Luis Reyes</b><span>Executive Producer, Butcher Bird Studios</span></footer></li>
-        <li><blockquote>By far one of the best stages in town. Clean large stage with a massive grid, elephant doors for easy load-in, cam-lock power, soundproofing, and AC.</blockquote><footer><b>Allison Calerri</b><span>Executive Producer, Ready Set Productions</span></footer></li>
-        <li><blockquote>From our smaller shoots to our larger-scale multi-cam Technocrane builds, they had us covered from start to finish. They'll make you feel like part of the family.</blockquote><footer><b>Ross Schneider</b><span>Production Manager, PurePlay Entertainment</span></footer></li>
-        <li><blockquote>The Agency Studios saved the day with a last-minute shoot. Within minutes they responded with a call and were ready to book my crew in.</blockquote><footer><b>Angela</b><span>Producer, WetVisuals</span></footer></li>
+      <div class="head">
+        <h2>From the producers who shoot here.</h2>
+      </div>
+      <ul class="quotes reveal" aria-label="Testimonials">
+        <li><blockquote>When we book stages closer to Hollywood we always run into compromises. We do not have to compromise anything when we use The Agency Studios.</blockquote><footer><b>Luis Reyes</b>Executive Producer, Butcher Bird Studios</footer></li>
+        <li><blockquote>By far one of the best stages in town. Clean large stage with a massive grid, elephant doors for easy load-in, cam-lock power, soundproofing, and AC.</blockquote><footer><b>Allison Calerri</b>Executive Producer, Ready Set Productions</footer></li>
+        <li><blockquote>From our smaller shoots to our larger-scale multi-cam Technocrane builds, they had us covered from start to finish. They'll make you feel like part of the family.</blockquote><footer><b>Ross Schneider</b>Production Manager, PurePlay Entertainment</footer></li>
+        <li><blockquote>The Agency Studios saved the day with a last-minute shoot. Within minutes they responded with a call and were ready to book my crew in.</blockquote><footer><b>Angela</b>Producer, WetVisuals</footer></li>
       </ul>
     </div>
   </section>
 
-  <section class="cta" id="book">
-    <img src="assets/gallery-1.jpg" alt="" loading="lazy">
-    <div class="shade" aria-hidden="true"></div>
+  <section id="clients">
     <div class="wrap">
-      <h2>Ready to book the stage?</h2>
-      <p>Dates, stage and headcount are enough to get a quote back to you. Last-minute shoots welcome.</p>
-      <div class="row">
-        <a class="btn btn-gold" href="book.html" style="padding:17px 30px">Book the studio</a>
-        <a class="btn btn-line" href="tel:+16268440028" style="padding:17px 30px">Call 626.844.0028</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="clients" id="clients">
-    <div class="wrap">
+      <div class="head" style="margin-bottom:24px"><h2 style="font-size:22px">Productions that have shot here</h2></div>
       <ul class="logos">
         <li><img src="assets/Netflix_Logo.png" alt="Netflix" loading="lazy"></li>
         <li><img src="assets/DoorDash_Logo.png" alt="DoorDash" loading="lazy"></li>
@@ -233,6 +209,19 @@
     </div>
   </section>
 
+  <section class="cta">
+    <div class="wrap">
+      <div>
+        <h2>Ready to book?</h2>
+        <p>Dates, room, and headcount are enough to get a quote back within the day. Last-minute shoots welcome.</p>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary" href="book.html">Book the studio</a>
+        <a class="btn btn-secondary" href="tel:+16268440028">Call 626.844.0028</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="foot">
@@ -240,7 +229,7 @@
     <div class="cols">
       <div class="brand">
         <img src="assets/Agency-Studio-Logo-white.png" alt="The Agency Studios" width="375" height="210">
-        <p>The largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+        <p>The largest professional studio in the San Gabriel Valley. Drive against traffic both ways and work in a state-of-the-art stage in Monrovia.</p>
       </div>
       <div>
         <h4>Visit</h4>
@@ -251,17 +240,17 @@
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
           <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
-          <li><a href="mailto:Shawn@theagencies.net">Shawn@theagencies.net</a> <span style="color:rgba(244,242,238,.45)">bookings</span></li>
-          <li><a href="book.html">Book a stage</a></li>
+          <li><a href="mailto:Shawn@theagencies.net">Shawn@theagencies.net</a></li>
+          <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
       </div>
       <div>
-        <h4>Studio Information</h4>
+        <h4>Studio information</h4>
         <ul>
-          <li><a href="schematic.html">Schematic</a></li>
-          <li><a href="#stages">Stages</a></li>
-          <li><a href="facility.html">Facility &amp; specs</a></li>
+          <li><a href="facility.html">Facility and specs</a></li>
+          <li><a href="add-ons.html">Add-ons and pricing</a></li>
+          <li><a href="schematic.html">Floor plans</a></li>
           <li><a href="podcast.html">Podcast Room</a></li>
           <li><a href="facility.html#offices">Offices for rent</a></li>
           <li><a href="safe-set.html">Safe Set</a></li>
@@ -269,48 +258,16 @@
       </div>
     </div>
     <div class="legal">
-      <span>© 2026 The Agency Studios. Monrovia, California.</span>
-      <span><a href="#stages">Main Stage</a><a href="#stages">Insert Stage</a><a href="#podcast">Podcast Room</a><a href="schematic.html">Schematic</a></span>
+      <span>© 2026 The Agency Studios, Monrovia, California.</span>
+      <span><a href="facility.html#stage1">Main Stage</a><a href="facility.html#stage2">Insert Stage</a><a href="podcast.html">Podcast Room</a></span>
     </div>
   </div>
 </footer>
 
 <script>
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Hero video fades in over the still once it can play.
   const v = document.getElementById('hero-video');
   v.addEventListener('loadeddata', () => v.classList.add('ready'));
   v.play && v.play().catch(() => {});
-
-  // Facility tour: auto-advances every 5.2s with a progress bar; hover pauses; click selects.
-  const DWELL = 5200, imgs = [...document.querySelectorAll('.tour-stage img')], items = [...document.querySelectorAll('#tour-list li')];
-  let active = 0, elapsed = 0, tick = null;
-  const paint = () => {
-    imgs.forEach((im, i) => im.classList.toggle('on', i === active));
-    items.forEach((li, i) => { li.classList.toggle('on', i === active); li.querySelector('.fill').style.width = i === active ? Math.min(100, elapsed / DWELL * 100) + '%' : '0'; });
-    document.getElementById('tour-title').textContent = items[active].querySelector('.ttl').textContent;
-  };
-  const select = i => { active = i; elapsed = 0; paint(); };
-  const start = () => { if (tick || reduced) return; tick = setInterval(() => { elapsed += 60; if (elapsed >= DWELL) select((active + 1) % items.length); else paint(); }, 60); };
-  const stop = () => { clearInterval(tick); tick = null; };
-  items.forEach((li, i) => li.querySelector('button').addEventListener('click', () => select(i)));
-  const tour = document.getElementById('tour');
-  tour.addEventListener('mouseenter', stop); tour.addEventListener('mouseleave', start);
-  paint(); start();
-
-  // Stage carousels: native scroll-snap does the drag; arrows re-target the scroll.
-  document.querySelectorAll('.stage figure').forEach(fig => {
-    const s = fig.querySelector('[data-carousel]'); if (!s) return;
-    const n = s.children.length, at = () => Math.round(s.scrollLeft / s.clientWidth);
-    const go = d => s.scrollTo({ left: ((at() + d + n) % n) * s.clientWidth, behavior: reduced ? 'auto' : 'smooth' });
-    fig.querySelector('.prev').addEventListener('click', () => go(-1));
-    fig.querySelector('.next').addEventListener('click', () => go(1));
-    s.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); });
-  });
-</script>
-<script>
-  // Mobile menu: the nav list becomes a panel under the bar. Closes on link tap, Escape, or resize past the breakpoint.
   (() => {
     const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn'), list = nav.querySelector('ul');
     const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };

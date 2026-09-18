@@ -2,32 +2,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studio Schematic</title>
 <meta name="description" content="Interactive floor plan of The Agency Studios in Monrovia, California: Stage 1 with a 47-by-43-foot two-wall cyc, Stage 2 insert stage, green rooms, power, parking, and load-in.">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
     <ul id="site-menu">
-      <li><a href="index.html#stages">Stages</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="facility.html">Facility</a></li>
-      <li><a href="index.html#gallery">On Set</a></li>
-      <li><a href="index.html#clients">Clients</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="podcast.html">Podcast Room</a></li>
+      <li><a href="add-ons.html">Add-ons</a></li>
+      <li><a href="schematic.html" aria-current="page">Floor plans</a></li>
       <li><a href="safe-set.html">Safe Set</a></li>
-      <li class="m-only"><a href="schematic.html">Schematic</a></li>
       <li class="m-only"><a href="tel:+16268440028">626.844.0028</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
-    <a class="btn btn-accent" href="book.html">Book the studio</a>
+    <a class="btn btn-primary" href="book.html">Book the studio</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="plan page-top">
+  <section class="page-top">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="head">
         <p class="eyebrow">Studio schematic</p>
         <h1>Walk the floor before you load in.</h1>
         <p class="lede">Tap any marker on the plan to see what's there. Scroll or pinch to zoom, drag to pan. North is to the left of the drawing.</p>
@@ -101,12 +101,12 @@
 
 </main>
 
-<footer class="site">
+<footer class="foot">
   <div class="wrap">
     <div class="cols">
-      <div>
-        <a class="logo" href="index.html" aria-label="The Agency Studios"><img class="dark-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"><img class="light-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210" style="filter:invert(1)"></a>
-        <p style="max-width:34em;color:var(--fg-2)">This newly built studio is the largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+      <div class="brand">
+        <img src="assets/Agency-Studio-Logo-white.png" alt="The Agency Studios" width="375" height="210">
+        <p>The largest professional studio in the San Gabriel Valley. Drive against traffic both ways and work in a state-of-the-art stage in Monrovia.</p>
       </div>
       <div>
         <h4>Visit</h4>
@@ -117,16 +117,17 @@
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
           <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
-          <li><a href="book.html">Book a stage</a></li>
+          <li><a href="mailto:Shawn@theagencies.net">Shawn@theagencies.net</a></li>
+          <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
       </div>
       <div>
-        <h4>Studio Information</h4>
+        <h4>Studio information</h4>
         <ul>
-          <li><a href="schematic.html" aria-current="page">Schematic</a></li>
-          <li><a href="index.html#stages">Stages</a></li>
-          <li><a href="facility.html">Facility &amp; specs</a></li>
+          <li><a href="facility.html">Facility and specs</a></li>
+          <li><a href="add-ons.html">Add-ons and pricing</a></li>
+          <li><a href="schematic.html">Floor plans</a></li>
           <li><a href="podcast.html">Podcast Room</a></li>
           <li><a href="facility.html#offices">Offices for rent</a></li>
           <li><a href="safe-set.html">Safe Set</a></li>
@@ -134,8 +135,8 @@
       </div>
     </div>
     <div class="legal">
-      <span>© 2026 The Agency Studios. Monrovia, California.</span>
-      <span><a href="index.html#stages">Main Stage</a> · <a href="index.html#stages">Insert Stage</a> · <a href="podcast.html">Podcast Room</a> · <a href="schematic.html">Schematic</a></span>
+      <span>© 2026 The Agency Studios, Monrovia, California.</span>
+      <span><a href="facility.html#stage1">Main Stage</a><a href="facility.html#stage2">Insert Stage</a><a href="podcast.html">Podcast Room</a></span>
     </div>
   </div>
 </footer>
@@ -190,7 +191,6 @@
   select('stage1');
 </script>
 <script>
-  // Mobile menu: the nav list becomes a panel under the bar. Closes on link tap, Escape, or resize past the breakpoint.
   (() => {
     const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn'), list = nav.querySelector('ul');
     const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };

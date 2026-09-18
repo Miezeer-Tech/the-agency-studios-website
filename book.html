@@ -2,32 +2,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book The Agency Studios</title>
 <meta name="description" content="Request a quote for the Main Stage or Insert Stage at The Agency Studios in Monrovia, California.">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="The Agency Studios home"><img src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"></a>
     <ul id="site-menu">
-      <li><a href="index.html#stages">Stages</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="facility.html">Facility</a></li>
-      <li><a href="index.html#gallery">On Set</a></li>
-      <li><a href="index.html#clients">Clients</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="podcast.html">Podcast Room</a></li>
+      <li><a href="add-ons.html">Add-ons</a></li>
+      <li><a href="schematic.html">Floor plans</a></li>
       <li><a href="safe-set.html">Safe Set</a></li>
-      <li class="m-only"><a href="schematic.html">Schematic</a></li>
       <li class="m-only"><a href="tel:+16268440028">626.844.0028</a></li>
     </ul>
     <a class="tel" href="tel:+16268440028">626.844.0028</a>
-    <a class="btn btn-accent" href="#book">Book the studio</a>
+    <a class="btn btn-primary" href="#book">Book the studio</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="book page-top" id="book">
-    <div class="wrap">
-      <div class="side reveal">
+  <section class="page-top" id="book">
+    <div class="wrap book">
+      <div class="side">
         <p class="eyebrow">Book the studio</p>
         <h2>Tell us about the shoot.</h2>
         <p class="lede">Dates, stage, and headcount are enough to get a quote back to you. Add-ons can be sorted later.</p>
@@ -35,7 +35,7 @@
         <p class="alt">Booking the Podcast Room? <a href="podcast.html#book">It has its own booking form</a>.</p>
       </div>
 
-      <form id="booking" class="reveal" novalidate>
+      <form id="booking" novalidate>
         <fieldset>
           <legend>Dates</legend>
           <div class="row">
@@ -72,20 +72,28 @@
         </fieldset>
 
         <fieldset>
-          <legend>Add-ons you’re interested in</legend>
+          <legend>Add-ons</legend>
           <div class="checks">
-            <label><input type="checkbox" name="Add-on" value="Production offices">Production offices</label>
-            <label><input type="checkbox" name="Add-on" value="Lighting package">Lighting package</label>
+            <label><input type="checkbox" name="Add-on" value="Black drapes (blackout)">Black drapes, blackout</label>
+            <label><input type="checkbox" name="Add-on" value="Chroma green drapes">Chroma green drapes</label>
+            <label><input type="checkbox" name="Add-on" value="Scissor lifts">Scissor lifts</label>
             <label><input type="checkbox" name="Add-on" value="Camera package">Camera package</label>
-            <label><input type="checkbox" name="Add-on" value="Grip package">Grip package</label>
+            <label><input type="checkbox" name="Add-on" value="4-ton grip package">4-ton grip package</label>
+            <label><input type="checkbox" name="Add-on" value="Custom lighting package">Custom lighting package</label>
             <label><input type="checkbox" name="Add-on" value="Distro package">Distro package</label>
-            <label><input type="checkbox" name="Add-on" value="Folding tables">Folding tables</label>
-            <label><input type="checkbox" name="Add-on" value="Folding chairs">Folding chairs</label>
-            <label><input type="checkbox" name="Add-on" value="10x10 tents with sides">10×10 tents with sides</label>
+            <label><input type="checkbox" name="Add-on" value="Production offices / separate rooms">Production offices</label>
+            <label><input type="checkbox" name="Add-on" value="Control room + livestream">Control room and livestream</label>
+            <label><input type="checkbox" name="Add-on" value="High-speed fiber internet">High-speed fiber internet</label>
+            <label><input type="checkbox" name="Add-on" value="Daily cleaning service">Daily cleaning service</label>
+            <label><input type="checkbox" name="Add-on" value="Additional parking">Additional parking</label>
+            <label><input type="checkbox" name="Add-on" value="PA system">PA system</label>
             <label><input type="checkbox" name="Add-on" value="Two-way radios">Two-way radios</label>
-            <label><input type="checkbox" name="Add-on" value="Live broadcast + high-speed fiber">Live broadcast and fiber</label>
+            <label><input type="checkbox" name="Add-on" value="Folding tables and chairs">Folding tables and chairs</label>
+            <label><input type="checkbox" name="Add-on" value="10x10 pop-up tents">10×10 pop-up tents</label>
+            <label><input type="checkbox" name="Add-on" value="Wardrobe and makeup gear">Wardrobe and makeup gear</label>
             <label><input type="checkbox" name="Add-on" value="Long-term studio rental">Long-term studio rental</label>
           </div>
+          <p class="small"><a class="more" href="add-ons.html">See add-on pricing</a></p>
         </fieldset>
 
         <fieldset>
@@ -102,7 +110,7 @@
 
         <div class="submit">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <button class="btn btn-accent" type="submit">Book the studio</button>
+          <button class="btn btn-primary" type="submit">Book the studio</button>
           <small>Goes straight to the studio. We reply to the email you give.</small>
           <p class="sent" id="sent" hidden>Your mail app should have opened with the request filled in. If it didn’t, call 626.844.0028.</p>
         </div>
@@ -112,12 +120,12 @@
 
 </main>
 
-<footer class="site">
+<footer class="foot">
   <div class="wrap">
     <div class="cols">
-      <div>
-        <a class="logo" href="index.html" aria-label="The Agency Studios"><img class="dark-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210"><img class="light-only" src="assets/Agency-Studio-Logo-white.png" alt="" width="375" height="210" style="filter:invert(1)"></a>
-        <p style="max-width:34em;color:var(--fg-2)">This newly built studio is the largest professional studio in the San Gabriel Valley. Why fight traffic to other studios morning and evening when you can drive against it both ways and work in a state-of-the-art stage in Monrovia?</p>
+      <div class="brand">
+        <img src="assets/Agency-Studio-Logo-white.png" alt="The Agency Studios" width="375" height="210">
+        <p>The largest professional studio in the San Gabriel Valley. Drive against traffic both ways and work in a state-of-the-art stage in Monrovia.</p>
       </div>
       <div>
         <h4>Visit</h4>
@@ -128,16 +136,17 @@
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
           <li><a href="mailto:info@theagencies.net">info@theagencies.net</a></li>
-          <li><a href="#book">Book a stage</a></li>
+          <li><a href="mailto:Shawn@theagencies.net">Shawn@theagencies.net</a></li>
+          <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
       </div>
       <div>
-        <h4>Studio Information</h4>
+        <h4>Studio information</h4>
         <ul>
-          <li><a href="schematic.html">Schematic</a></li>
-          <li><a href="index.html#stages">Stages</a></li>
-          <li><a href="facility.html">Facility &amp; specs</a></li>
+          <li><a href="facility.html">Facility and specs</a></li>
+          <li><a href="add-ons.html">Add-ons and pricing</a></li>
+          <li><a href="schematic.html">Floor plans</a></li>
           <li><a href="podcast.html">Podcast Room</a></li>
           <li><a href="facility.html#offices">Offices for rent</a></li>
           <li><a href="safe-set.html">Safe Set</a></li>
@@ -145,8 +154,8 @@
       </div>
     </div>
     <div class="legal">
-      <span>© 2026 The Agency Studios. Monrovia, California.</span>
-      <span><a href="index.html#stages">Main Stage</a> · <a href="index.html#stages">Insert Stage</a> · <a href="podcast.html">Podcast Room</a> · <a href="schematic.html">Schematic</a></span>
+      <span>© 2026 The Agency Studios, Monrovia, California.</span>
+      <span><a href="facility.html#stage1">Main Stage</a><a href="facility.html#stage2">Insert Stage</a><a href="podcast.html">Podcast Room</a></span>
     </div>
   </div>
 </footer>
@@ -194,7 +203,6 @@
   });
 </script>
 <script>
-  // Mobile menu: the nav list becomes a panel under the bar. Closes on link tap, Escape, or resize past the breakpoint.
   (() => {
     const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn'), list = nav.querySelector('ul');
     const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };
