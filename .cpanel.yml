@@ -3,5 +3,5 @@
 # api/config.php and api/data/ are not in the repo, so they are never overwritten.
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html
+    - export DEPLOYPATH=$HOME/public_html/theagencystudio.com
     - /bin/cp -R index.html facility.html podcast.html add-ons.html book.html schematic.html safe-set.html site.css assets admin api agreement DEPLOY.md $DEPLOYPATH/

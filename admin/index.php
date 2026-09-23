@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
      && password_verify($_POST['pass'] ?? '', $c['admin_pass_hash']);
   if ($ok) { session_regenerate_id(true); $_SESSION['admin'] = true; header('Location: ./'); exit; }
   usleep(500000);   // ponytail: half-second slowdown on bad logins; add lockout counter if brute force ever shows up
-  $error = empty($c['admin_pass_hash']) ? 'Admin password is not set up yet. See api/config.example.php.' : 'Wrong email or password.';
+  $error = empty($c['admin_pass_hash']) ? 'Admin password is not set up yet. Open /admin/setup.php first.' : 'Wrong email or password.';
 }
 $signedIn = !empty($_SESSION['admin']);
 
@@ -107,6 +107,7 @@ if ($signedIn && isset($_GET['pdf'])) {
   <label>Email <input name="user" type="email" autocomplete="username" required></label>
   <label>Password <input name="pass" type="password" autocomplete="current-password" required></label>
   <?php if ($error): ?><p class="err"><?= $h($error) ?></p><?php endif ?>
+  <?php if (isset($_GET['setup'])): ?><p class="muted">Setup saved. Sign in with the password you just chose.</p><?php endif ?>
   <button name="login" value="1">Sign in</button>
 </form>
 
