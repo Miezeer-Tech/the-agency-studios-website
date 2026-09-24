@@ -43,6 +43,11 @@ if ($signedIn && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend']
   if ($a && $err === null) db()->exec('UPDATE agreements SET link_emailed = 1 WHERE id = ' . (int)$a['id']);
   header('Location: ./?sent=' . rawurlencode($a['slug'] ?? '') . ($err ? '&mail=0' : '') . '#agreements'); exit;
 }
+if ($signedIn && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_booking'])) {
+  $b = db()->query('SELECT * FROM bookings WHERE id = ' . (int)$_POST['send_booking'])->fetch(PDO::FETCH_ASSOC);
+  if ($b && send_booking_email($b) === null) db()->exec('UPDATE bookings SET emailed = 1 WHERE id = ' . (int)$b['id']);
+  header('Location: ./?id=' . (int)$_POST['send_booking']); exit;
+}
 if ($signedIn && isset($_GET['apdf'])) {
   $a = db()->query('SELECT * FROM agreements WHERE id = ' . (int)$_GET['apdf'])->fetch(PDO::FETCH_ASSOC);
   if ($a) { header('Content-Type: application/pdf'); header('Content-Disposition: inline; filename="studio-rental-agreement-' . $a['id'] . '.pdf"'); echo agreement_pdf($a); }
@@ -152,6 +157,7 @@ if ($signedIn && isset($_GET['pdf'])) {
         </select>
         <button>Save status</button>
         <a class="btn" href="./?pdf=<?= $sel['id'] ?>" target="_blank" rel="noopener">PDF</a>
+        <?php if (!$sel['emailed']): ?><button name="send_booking" value="<?= $sel['id'] ?>" style="background:transparent;border:1px solid var(--line)">Email it to <?= $h($c['to_email'] ?? 'the studio') ?></button><?php endif ?>
         <a href="mailto:<?= $h($sel['email']) ?>?subject=<?= rawurlencode('Your booking request at The Agency Studios (#' . $sel['id'] . ')') ?>">Reply by email</a>
       </form>
       <?php endif ?>

@@ -12,14 +12,15 @@ $base = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . ($_SERVER['HTTP
 $defaults = file_exists(__DIR__ . '/../api/config.example.php') ? require __DIR__ . '/../api/config.example.php' : [];
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $email = trim($_POST['email'] ?? ''); $pass = $_POST['pass'] ?? ''; $pass2 = $_POST['pass2'] ?? ''; $app = str_replace(' ', '', trim($_POST['app'] ?? '')); $site = rtrim(trim($_POST['site'] ?? ''), '/');
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error = 'Enter the studio Gmail address.';
+  $to = trim($_POST['to'] ?? ''); $email = trim($_POST['email'] ?? ''); $pass = $_POST['pass'] ?? ''; $pass2 = $_POST['pass2'] ?? ''; $app = str_replace(' ', '', trim($_POST['app'] ?? '')); $site = rtrim(trim($_POST['site'] ?? ''), '/');
+  if (!filter_var($to, FILTER_VALIDATE_EMAIL)) $error = 'Enter the address that should receive bookings.';
+  elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error = 'Enter the studio Gmail address.';
   elseif (strlen($pass) < 8) $error = 'The admin password needs at least 8 characters.';
   elseif ($pass !== $pass2) $error = 'The two admin passwords do not match.';
   elseif (strlen($app) < 16) $error = 'The Google App Password is 16 characters (Google shows it in four groups of four).';
   else {
     $cfg = array_merge($defaults, [
-      'to_email' => $email, 'smtp_user' => $email, 'from_email' => $email, 'smtp_pass' => $app,
+      'to_email' => $to, 'to_name' => 'The Agency Studios', 'smtp_user' => $email, 'from_email' => $email, 'smtp_pass' => $app,
       'admin_user' => $email, 'admin_pass_hash' => password_hash($pass, PASSWORD_DEFAULT),
       'site_url' => $site ?: $base,
       'allowed_origins' => array_values(array_unique(array_merge($defaults['allowed_origins'] ?? [], [$site ?: $base]))),
@@ -45,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form class="box" method="post" autocomplete="off">
   <h1>Set up the studio admin</h1>
   <p>This runs once. It creates the server config with your admin sign-in and the Gmail App Password used to send booking emails and signed agreements.</p>
-  <label>Studio Gmail address (admin sign-in and sender) <input name="email" type="email" required value="<?= $h($_POST['email'] ?? $defaults['to_email'] ?? '') ?>"></label>
+  <label>Where booking requests and signed agreements are delivered <input name="to" type="email" required value="<?= $h($_POST['to'] ?? $defaults['to_email'] ?? '') ?>"></label>
+  <label>Gmail address that sends them (also the admin sign-in) <input name="email" type="email" required value="<?= $h($_POST['email'] ?? $defaults['smtp_user'] ?? '') ?>"></label>
   <label>Admin password <input name="pass" type="password" required minlength="8" autocomplete="new-password"></label>
   <label>Admin password again <input name="pass2" type="password" required minlength="8" autocomplete="new-password"></label>
   <label>Google App Password for that mailbox <input name="app" type="password" required placeholder="xxxx xxxx xxxx xxxx"></label>

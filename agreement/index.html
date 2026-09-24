@@ -115,7 +115,7 @@
   <div class="wrap">
     <div class="legal">
       <span>© 2026 The Agency Studios, Monrovia, California.</span>
-      <span><a href="tel:+16268440028">626.844.0028</a><a href="mailto:studio@theagencies.net">studio@theagencies.net</a></span>
+      <span><a href="tel:+16268440028">626.844.0028</a><a href="mailto:studios@theagencies.net">studios@theagencies.net</a></span>
     </div>
   </div>
 </footer>
@@ -224,7 +224,7 @@
       nextbar.hidden = true; form.innerHTML = '<div class="done"><h2>Signed and sent.</h2><p class="lede" style="margin:0 auto">' + (j.emailed ? 'A copy of the signed agreement is on its way to <b>' + fields['Email'].replace(/</g, '&lt;') + '</b> and to the studio.' : 'The agreement was recorded (#' + j.id + '). The email could not go out just now, so the studio will send your copy by hand.') + ' Shawn will countersign and return the fully executed copy once payment and the Certificate of Insurance are in.</p></div>';
       scrollTo({ top: form.getBoundingClientRect().top + scrollY - 120, behavior: 'smooth' });
     } catch (err) {
-      msg.className = 'msg err'; msg.textContent = (err.message || 'Something went wrong.') + ' Try again, or print this page (it prints with your signature) and email it to studio@theagencies.net.';
+      msg.className = 'msg err'; msg.textContent = (err.message || 'Something went wrong.') + ' Try again, or print this page (it prints with your signature) and email it to studios@theagencies.net.';
       btn.disabled = false; btn.textContent = 'Agree, sign and submit';
     }
   });

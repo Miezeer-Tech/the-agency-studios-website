@@ -30,7 +30,7 @@
         <p class="eyebrow">Book the studio</p>
         <h2>Tell us about the shoot.</h2>
         <p class="lede">Dates, stage, and headcount are enough to get a quote back to you. Add-ons can be sorted later.</p>
-        <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:studio@theagencies.net">studio@theagencies.net</a>. Last-minute shoots welcome.</p>
+        <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:studios@theagencies.net">studios@theagencies.net</a>. Last-minute shoots welcome.</p>
         <p class="alt">Booking the Podcast Room? <a href="podcast.html#book">It has its own booking form</a>.</p>
       </div>
 
@@ -134,7 +134,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
-          <li><a href="mailto:studio@theagencies.net">studio@theagencies.net</a></li>
+          <li><a href="mailto:studios@theagencies.net">studios@theagencies.net</a></li>
           <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
@@ -177,7 +177,7 @@
   const mailtoFallback = fields => {
     const lines = LEAD.slice();
     for (const [k, v] of Object.entries(fields)) if (v && v.length) lines.push(`${k}: ${Array.isArray(v) ? v.join(', ') : v}`);
-    location.href = `mailto:studio@theagencies.net?subject=${encodeURIComponent('Studio booking request')}&body=${encodeURIComponent(lines.join('\n'))}`;
+    location.href = `mailto:studios@theagencies.net?subject=${encodeURIComponent('Studio booking request')}&body=${encodeURIComponent(lines.join('\n'))}`;
     sent.textContent = 'Your mail app should have opened with the request filled in. If it did not, call 626.844.0028.';
     sent.hidden = false;
   };

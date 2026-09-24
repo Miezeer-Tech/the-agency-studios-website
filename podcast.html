@@ -110,7 +110,7 @@
           <p class="rate-big">From $150 to $200<span>per hour</span></p>
           <p class="alt">The hourly rate depends on crew and broadcast needs. Tell us the show and we'll quote the exact rate.</p>
         </div>
-        <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:studio@theagencies.net">studio@theagencies.net</a>. Booking a stage instead? <a href="book.html">Use the studio form</a>.</p>
+        <p class="alt">Prefer to talk? Call <a href="tel:+16268440028">626.844.0028</a> or email <a href="mailto:studios@theagencies.net">studios@theagencies.net</a>. Booking a stage instead? <a href="book.html">Use the studio form</a>.</p>
       </div>
 
       <form id="booking" novalidate>
@@ -195,7 +195,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="tel:+16268440028">626.844.0028</a></li>
-          <li><a href="mailto:studio@theagencies.net">studio@theagencies.net</a></li>
+          <li><a href="mailto:studios@theagencies.net">studios@theagencies.net</a></li>
           <li><a href="book.html">Book the studio</a></li>
           <li><a href="podcast.html#book">Book the Podcast Room</a></li>
         </ul>
@@ -263,7 +263,7 @@
   const mailtoFallback = fields => {
     const lines = LEAD.slice();
     for (const [k, v] of Object.entries(fields)) if (v && v.length) lines.push(`${k}: ${Array.isArray(v) ? v.join(', ') : v}`);
-    location.href = `mailto:studio@theagencies.net?subject=${encodeURIComponent('Podcast Room booking request')}&body=${encodeURIComponent(lines.join('\n'))}`;
+    location.href = `mailto:studios@theagencies.net?subject=${encodeURIComponent('Podcast Room booking request')}&body=${encodeURIComponent(lines.join('\n'))}`;
     sent.textContent = 'Your mail app should have opened with the request filled in. If it did not, call 626.844.0028.';
     sent.hidden = false;
   };

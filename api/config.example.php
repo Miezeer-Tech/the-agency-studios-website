@@ -2,8 +2,8 @@
 // Copy this file to config.php and fill it in. config.php is ignored by git and must never be committed.
 return [
   // Where booking requests are delivered.
-  'to_email'   => 'Shawn@theagencies.net',
-  'to_name'    => 'Shawn Laska',
+  'to_email'   => 'studios@theagencies.net',
+  'to_name'    => 'The Agency Studios',
 
   // Gmail / Google Workspace SMTP. Use an App Password (Google Account → Security → 2-Step Verification → App passwords),
   // not the account password. The from address must be the same mailbox.
