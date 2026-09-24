@@ -189,8 +189,10 @@ fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; min-width
 legend { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 10px; padding: 0; }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
-label.field { display: grid; gap: 6px; font-size: 14px; font-weight: 500; color: var(--ink-2); }
-input, select { font: inherit; font-size: 16px; color: var(--ink); background: #FFFFFF; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); min-height: 46px; padding: 0 14px; width: 100%; transition: border-color 150ms ease, box-shadow 150ms ease; }
+label.field { display: grid; gap: 6px; font-size: 14px; font-weight: 500; color: var(--ink-2); min-width: 0; }
+.row > * { min-width: 0; }
+input, select { font: inherit; font-size: 16px; color: var(--ink); background: #FFFFFF; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); min-height: 46px; padding: 0 14px; width: 100%; min-width: 0; max-width: 100%; transition: border-color 150ms ease, box-shadow 150ms ease; }
+input[type=date] { -webkit-appearance: none; appearance: none; display: block; text-align: left; }   /* iOS gives date fields an intrinsic width that overflows a narrow column */
 input::placeholder { color: var(--mute); }
 input:focus, select:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,95,230,.18); }
 .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; background: var(--tint); border-radius: 12px; }
