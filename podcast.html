@@ -220,6 +220,31 @@
 </footer>
 
 <script>
+  // Photo rails scroll on their own (Windows mice can't scroll sideways). Hover or touch pauses; mouse drag works too.
+  document.querySelectorAll('.rail').forEach(rail => {
+    const items = [...rail.children];
+    items.forEach(li => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); rail.append(c); });   // second copy makes the loop seamless
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let paused = reduced, last = 0, drag = null, pos = 0;   // pos keeps sub-pixel progress; scrollLeft rounds to whole pixels
+    const half = () => (rail.scrollWidth + parseFloat(getComputedStyle(rail).gap || 0)) / 2;
+    const step = t => {
+      const dt = Math.min(50, t - last); last = t;
+      if (Math.abs(rail.scrollLeft - pos) > 1.5) pos = rail.scrollLeft;   // user scrolled or dragged: pick up from there
+      if (!paused && !document.hidden) { pos += 0.045 * dt; if (pos >= half()) pos -= half(); rail.scrollLeft = pos; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(t => { last = t; step(t); });
+    rail.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') paused = true; });
+    rail.addEventListener('pointerleave', () => { paused = reduced; drag = null; });
+    rail.addEventListener('touchstart', () => paused = true, { passive: true });
+    rail.addEventListener('touchend', () => setTimeout(() => paused = reduced, 2500));
+    rail.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse') { drag = { x: e.clientX, left: rail.scrollLeft }; rail.setPointerCapture(e.pointerId); } });
+    rail.addEventListener('pointermove', e => { if (drag) rail.scrollLeft = drag.left - (e.clientX - drag.x); });
+    rail.addEventListener('pointerup', () => drag = null);
+    rail.addEventListener('dragstart', e => e.preventDefault());
+  });
+</script>
+<script>
   // Same hours as the studio form: starts 6am to 4pm, ends 2pm to 12am.
   const hour = h => `${((h + 11) % 12) + 1}${h < 12 || h === 24 ? 'am' : 'pm'}`;
   const fill = (id, from, to) => document.getElementById(id).innerHTML =

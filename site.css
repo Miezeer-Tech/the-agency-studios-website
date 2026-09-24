@@ -144,8 +144,9 @@ section.flush { padding-top: 0; }
 .steps p { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
 
 /* photo rail */
-.rail { list-style: none; margin: 0; padding: 0 clamp(20px, 4vw, 48px) 8px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; overscroll-behavior-x: contain; }
-.rail li { flex: 0 0 clamp(260px, 32vw, 420px); scroll-snap-align: start; }
+.rail { list-style: none; margin: 0; padding: 0 clamp(20px, 4vw, 48px) 8px; display: flex; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain; cursor: grab; user-select: none; }
+.rail:active { cursor: grabbing; }
+.rail li { flex: 0 0 clamp(260px, 32vw, 420px); }
 .rail img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); background: var(--tint); box-shadow: var(--shadow); }
 .rail .crop { display: block; position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radius); background: var(--tint); box-shadow: var(--shadow); }
 .rail .crop img { position: absolute; top: 0; left: -16.67%; width: 133.34%; height: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
