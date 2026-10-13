@@ -45,8 +45,9 @@ if ($signedIn && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend']
 }
 if ($signedIn && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_booking'])) {
   $b = db()->query('SELECT * FROM bookings WHERE id = ' . (int)$_POST['send_booking'])->fetch(PDO::FETCH_ASSOC);
-  if ($b && send_booking_email($b) === null) db()->exec('UPDATE bookings SET emailed = 1 WHERE id = ' . (int)$b['id']);
-  header('Location: ./?id=' . (int)$_POST['send_booking']); exit;
+  $err = $b ? send_booking_email($b) : 'Request not found';
+  if ($err === null) db()->exec('UPDATE bookings SET emailed = 1 WHERE id = ' . (int)$b['id']);
+  header('Location: ./?id=' . (int)$_POST['send_booking'] . ($err === null ? '&mailed=1' : '&mailed=0&why=' . rawurlencode($err))); exit;
 }
 if ($signedIn && isset($_GET['apdf'])) {
   $a = db()->query('SELECT * FROM agreements WHERE id = ' . (int)$_GET['apdf'])->fetch(PDO::FETCH_ASSOC);
@@ -99,12 +100,25 @@ if ($signedIn && isset($_GET['pdf'])) {
   .arow.tot input { font-weight:600; color:#5BE08F; }
   .atbl table { min-width:640px; } .atbl td, .atbl th { padding:4px 5px; } .atbl input, .atbl select { padding:6px 8px; font-size:13px; border-radius:8px; }
   .link { font-family:ui-monospace,Menlo,monospace; font-size:12px; word-break:break-all; }
+  .toast { position:fixed; left:50%; bottom:28px; transform:translateX(-50%); z-index:9; display:flex; align-items:center; gap:12px; max-width:min(92vw,560px); padding:14px 18px; border-radius:14px; background:#1C1C22; border:1px solid rgba(244,242,238,.14); box-shadow:0 16px 40px rgba(0,0,0,.45); font-size:14px; animation:toast-in .28s ease-out; }
+  .toast.good { border-color:rgba(46,204,113,.5); } .toast.bad { border-color:rgba(255,122,122,.5); }
+  .toast .dot { width:10px; height:10px; border-radius:50%; flex:0 0 auto; } .toast.good .dot { background:#5BE08F; box-shadow:0 0 0 4px rgba(46,204,113,.2); } .toast.bad .dot { background:#FF7A7A; box-shadow:0 0 0 4px rgba(255,122,122,.2); }
+  .toast button { margin-left:auto; background:transparent; color:var(--mute); padding:4px 6px; letter-spacing:0; text-transform:none; font-size:18px; line-height:1; }
+  @keyframes toast-in { from { opacity:0; transform:translate(-50%, 12px); } to { opacity:1; transform:translate(-50%, 0); } }
   @media (max-width: 860px) { .grid { grid-template-columns:1fr; } h1 { font-size:20px; } .top { flex-wrap:wrap; } }
   @media (max-width: 600px) { th:nth-child(2), td:nth-child(2), th:nth-child(7), td:nth-child(7) { display:none; } }
 </style>
 <div class="top"><img src="../assets/Agency-Studio-Logo-white.png" alt=""><h1>Bookings and agreements</h1>
   <?php if ($signedIn): ?><span class="sp"><?= $h($c['admin_user'] ?? '') ?> · <a href="./?logout=1">Sign out</a></span><?php endif ?>
 </div>
+
+<?php if ($signedIn && isset($_GET['mailed'])): $good = $_GET['mailed'] === '1'; ?>
+<div class="toast <?= $good ? 'good' : 'bad' ?>" role="status" id="toast"><span class="dot"></span>
+  <span><?= $good ? '<b>Sent.</b> Request #' . (int)($_GET['id'] ?? 0) . ' was emailed to ' . $h($c['to_email'] ?? 'the studio') . ' with the PDF attached.' : '<b>Not sent.</b> ' . $h($_GET['why'] ?? 'The email could not go out.') . ' Try again, or check the mail setup.' ?></span>
+  <button type="button" aria-label="Dismiss" onclick="this.parentNode.remove()">&times;</button>
+</div>
+<script>setTimeout(() => document.getElementById('toast')?.remove(), 9000); history.replaceState(null, '', location.pathname + '?id=<?= (int)($_GET['id'] ?? 0) ?>');</script>
+<?php endif ?>
 
 <?php if (!$signedIn): ?>
 <form class="login" method="post">
@@ -157,7 +171,7 @@ if ($signedIn && isset($_GET['pdf'])) {
         </select>
         <button>Save status</button>
         <a class="btn" href="./?pdf=<?= $sel['id'] ?>" target="_blank" rel="noopener">PDF</a>
-        <?php if (!$sel['emailed']): ?><button name="send_booking" value="<?= $sel['id'] ?>" style="background:transparent;border:1px solid var(--line)">Email it to <?= $h($c['to_email'] ?? 'the studio') ?></button><?php endif ?>
+        <?php if (!$sel['emailed']): ?><button name="send_booking" value="<?= $sel['id'] ?>" style="background:transparent;border:1px solid var(--line)">Email it to <?= $h($c['to_email'] ?? 'the studio') ?></button><?php else: ?><button name="send_booking" value="<?= $sel['id'] ?>" style="background:transparent;border:1px solid var(--line)">Send again</button><?php endif ?>
         <a href="mailto:<?= $h($sel['email']) ?>?subject=<?= rawurlencode('Your booking request at The Agency Studios (#' . $sel['id'] . ')') ?>">Reply by email</a>
       </form>
       <?php endif ?>
