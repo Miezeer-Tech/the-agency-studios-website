@@ -13,9 +13,8 @@ $defaults = file_exists(__DIR__ . '/../api/config.example.php') ? require __DIR_
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $via = ($_POST['via'] ?? 'host') === 'gmail' ? 'gmail' : 'host';
-  $to = trim($_POST['to'] ?? ''); $email = trim($_POST['email'] ?? ''); $pass = $_POST['pass'] ?? ''; $pass2 = $_POST['pass2'] ?? ''; $app = str_replace(' ', '', trim($_POST['app'] ?? '')); $site = rtrim(trim($_POST['site'] ?? ''), '/');
-  if (!filter_var($to, FILTER_VALIDATE_EMAIL)) $error = 'Enter the address that should receive bookings.';
-  elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error = 'Enter the studio Gmail address.';
+  $to = 'studios@theagencies.net'; $email = trim($_POST['email'] ?? ''); $pass = $_POST['pass'] ?? ''; $pass2 = $_POST['pass2'] ?? ''; $app = str_replace(' ', '', trim($_POST['app'] ?? '')); $site = rtrim(trim($_POST['site'] ?? ''), '/');
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error = 'Enter the studio Gmail address.';
   elseif (strlen($pass) < 8) $error = 'The admin password needs at least 8 characters.';
   elseif ($pass !== $pass2) $error = 'The two admin passwords do not match.';
   elseif ($via === 'gmail' && strlen($app) < 16) $error = 'The Google App Password is 16 characters (Google shows it in four groups of four).';
@@ -49,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form class="box" method="post" autocomplete="off">
   <h1>Set up the studio admin</h1>
   <p>This runs once. It creates the server config: where booking requests go, which mailbox sends them, and your admin sign-in.</p>
-  <label>Where booking requests and signed agreements are delivered <input name="to" type="email" required value="<?= $h($_POST['to'] ?? $defaults['to_email'] ?? '') ?>"></label>
+  <p><b style="color:#F4F2EE">Booking requests and signed agreements are delivered to studios@theagencies.net.</b> Below, choose the mailbox that sends them and set the admin password.</p>
   <label>Send them through
     <select name="via" id="via"><option value="host" <?= ($_POST['via'] ?? 'host') === 'host' ? 'selected' : '' ?>>An email account on this hosting (made in cPanel, e.g. crystal@theagencystudio.com)</option><option value="gmail" <?= ($_POST['via'] ?? '') === 'gmail' ? 'selected' : '' ?>>A Gmail / Google Workspace account</option></select>
   </label>
