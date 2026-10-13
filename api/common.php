@@ -246,22 +246,24 @@ function agreement_pdf(array $a): string {
 // Plain-text email with attachments over SMTP. Returns null on success, an error string otherwise.
 function send_mail(string $toEmail, string $toName, string $subject, string $body, array $attachments = [], ?array $replyTo = null): ?string {
   $c = cfg();
-  if (empty($c['smtp_user']) || empty($c['smtp_pass'])) return 'SMTP not configured';
+  $local = !empty($c['smtp_local']);   // a mailbox on this hosting: hand the message to the server's own mail system, no SMTP login needed
+  if (!$local && (empty($c['smtp_user']) || empty($c['smtp_pass']))) return 'SMTP not configured';
+  if ($local && empty($c['from_email'])) return 'Sender not configured';
   require_once __DIR__ . '/lib/Exception.php';
   require_once __DIR__ . '/lib/PHPMailer.php';
   require_once __DIR__ . '/lib/SMTP.php';
   $m = new PHPMailer\PHPMailer\PHPMailer(true);
   try {
-    $m->isSMTP();
+    if ($local) $m->isMail(); else $m->isSMTP();
     $m->Host = $c['smtp_host'] ?? 'smtp.gmail.com';
     $m->Port = (int)($c['smtp_port'] ?? 587);
     $m->SMTPAuth = true;
     $m->SMTPSecure = $m->Port === 465 ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-    if (!empty($c['smtp_local'])) $m->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];   // the hosting's own mail server on localhost
     $m->Username = $c['smtp_user'];
     $m->Password = $c['smtp_pass'];
     $m->CharSet = 'UTF-8';
     $m->setFrom($c['from_email'] ?? $c['smtp_user'], $c['from_name'] ?? 'The Agency Studios Website');
+    if ($local) $m->Sender = $c['from_email'];
     $m->addAddress($toEmail, $toName);
     if ($replyTo && filter_var($replyTo[0], FILTER_VALIDATE_EMAIL)) $m->addReplyTo($replyTo[0], $replyTo[1] ?? '');
     $m->Subject = $subject;
