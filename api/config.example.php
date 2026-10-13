@@ -7,6 +7,7 @@ return [
 
   // Gmail / Google Workspace SMTP. Use an App Password (Google Account → Security → 2-Step Verification → App passwords),
   // not the account password. The from address must be the same mailbox.
+  // Or a mailbox made in cPanel: smtp_host 'localhost', smtp_port 587, smtp_local true, smtp_user/from_email that mailbox.
   'smtp_host'  => 'smtp.gmail.com',
   'smtp_port'  => 587,
   'smtp_user'  => 'Shawn@theagencies.net',

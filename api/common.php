@@ -257,6 +257,7 @@ function send_mail(string $toEmail, string $toName, string $subject, string $bod
     $m->Port = (int)($c['smtp_port'] ?? 587);
     $m->SMTPAuth = true;
     $m->SMTPSecure = $m->Port === 465 ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+    if (!empty($c['smtp_local'])) $m->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];   // the hosting's own mail server on localhost
     $m->Username = $c['smtp_user'];
     $m->Password = $c['smtp_pass'];
     $m->CharSet = 'UTF-8';

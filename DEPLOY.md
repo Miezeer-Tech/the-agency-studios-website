@@ -3,7 +3,7 @@
 The site is static HTML except for three PHP pieces: `api/booking.php` (receives the booking forms), `api/agreement.php` (receives the signed rental agreement from the hidden `/agreement/` page) and `admin/` (Shawn's sign-in to see every request and signed agreement). GoDaddy Linux Web Hosting runs PHP 8 with SQLite, which is all this needs.
 
 1. Upload everything in this folder to the domain's document root. On this account that is `public_html/theagencystudio.com/` (cPanel's Git Version Control deploys there through `.cpanel.yml`; SFTP works too, shell access is off).
-2. Open `https://theagencystudio.com/admin/setup.php` once. It asks for the studio Gmail address, an admin password, and the Google App Password, and writes `api/config.php` for you. Do it right after deploying: the page switches itself off once a password exists. (Manual alternative: copy `api/config.example.php` to `api/config.php` and fill in:
+2. Open `https://theagencystudio.com/admin/setup.php` once. It asks where requests should be delivered, which mailbox sends them (a cPanel mailbox such as crystal@theagencystudio.com, or Gmail with an App Password), and an admin password, and writes `api/config.php` for you. Do it right after deploying: the page switches itself off once a password exists. (Manual alternative: copy `api/config.example.php` to `api/config.php` and fill in:
    - `smtp_user` / `from_email`: Shawn@theagencies.net
    - `smtp_pass`: a Google **App Password** for that mailbox (Google Account → Security → 2-Step Verification → App passwords). Not the normal password.
    - `admin_pass_hash`: run this on any machine with PHP and paste the output:
